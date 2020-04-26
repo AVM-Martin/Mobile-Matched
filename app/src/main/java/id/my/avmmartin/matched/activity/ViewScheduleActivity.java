@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import id.my.avmmartin.matched.R;
+
 public class ViewScheduleActivity extends AppCompatActivity {
 
     @Override
