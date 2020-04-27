@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Matched</string>
+    <string name="some_error">Error</string>
 </resources>
