@@ -33,8 +33,8 @@ public class ScheduleFactory {
                     db.insertSchedule(new Schedule(
                         "Title " + i,
                         "location",
-                        startTime.getTime(),
-                        endTime.getTime()
+                        startTime,
+                        endTime
                     ));
                 } catch (Exception e) {
                     //

@@ -3,7 +3,7 @@ package id.my.avmmartin.matched.data.db.model;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import id.my.avmmartin.matched.data.db.ScheduleManager;
 import id.my.avmmartin.matched.utils.Constants;
@@ -19,23 +19,27 @@ public class Schedule {
     private int id;
     private String name;
     private String location;
-    private Date startTime;
-    private Date endTime;
+    private Calendar startTime;
+    private Calendar endTime;
 
-    public Schedule(String name, String location, Date startTime, Date endTime) throws Exception {
-        setId(NEW_SCHEDULE_ID);
-        setName(name);
-        setLocation(location);
-        setStartTime(startTime);
-        setEndTime(endTime);
+    public boolean isNewSchedule() {
+        return getId() != NEW_SCHEDULE_ID;
     }
+
+    // database-related method
 
     public Schedule(Cursor cursor) throws Exception {
         setId(cursor.getInt(cursor.getColumnIndex(ID)));
         setName(cursor.getString(cursor.getColumnIndex(NAME)));
         setLocation(cursor.getString(cursor.getColumnIndex(LOCATION)));
-        setStartTime(new Date(Long.parseLong(cursor.getString(cursor.getColumnIndex(START_TIME)))));
-        setEndTime(new Date(Long.parseLong(cursor.getString(cursor.getColumnIndex(END_TIME)))));
+
+        Calendar startTime = Calendar.getInstance();
+        startTime.setTimeInMillis(cursor.getInt(cursor.getColumnIndex(START_TIME))));
+        setStartTime(startTime);
+
+        Calendar endTime = Calendar.getInstance();
+        startTime.setTimeInMillis(cursor.getInt(cursor.getColumnIndex(END_TIME))));
+        setEndTime(endTime);
     }
 
     public ContentValues toContentValues() {
@@ -43,14 +47,20 @@ public class Schedule {
 
         contentValues.put(NAME, getName());
         contentValues.put(LOCATION, getLocation());
-        contentValues.put(START_TIME, Long.toString(getStartTime().getTime()));
-        contentValues.put(END_TIME, Long.toString(getEndTime().getTime()));
+        contentValues.put(START_TIME, getStartTime().getTimeInMillis()));
+        contentValues.put(END_TIME, getEndTime().getTimeInMillis()));
 
         return contentValues;
     }
 
-    public boolean isNewSchedule() {
-        return id == NEW_SCHEDULE_ID;
+    // constructor
+
+    public Schedule(String name, String location, Calendar startTime, Calendar endTime) throws Exception {
+        setId(NEW_SCHEDULE_ID);
+        setName(name);
+        setLocation(location);
+        setStartTime(startTime);
+        setEndTime(endTime);
     }
 
     // getter
@@ -67,11 +77,11 @@ public class Schedule {
         return location;
     }
 
-    public Date getStartTime() {
+    public Calendar getStartTime() {
         return startTime;
     }
 
-    public Date getEndTime() {
+    public Calendar getEndTime() {
         return endTime;
     }
 
@@ -93,11 +103,11 @@ public class Schedule {
         this.location = location;
     }
 
-    private void setStartTime(Date startTime) throws Exception {
+    private void setStartTime(Calendar startTime) throws Exception {
         this.startTime = startTime;
     }
 
-    private void setEndTime(Date endTime) throws Exception {
+    private void setEndTime(Calendar endTime) throws Exception {
         this.endTime = endTime;
     }
 }
