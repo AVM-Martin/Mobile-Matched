@@ -15,14 +15,7 @@ public class Activity extends BaseActivity<Presenter> implements MVPView {
         setContentView(R.layout.activity_schedule_view);
         super.onCreate(savedInstanceState);
 
-        calendarView = (CalendarView) findViewById(R.id.calendar);
 
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-
-            }
-        });
     }
 
     @Override

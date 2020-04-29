@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageButton
+            android:id="@+id/ibPreviousMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/prev_month_arrow_24dp"
+            android:layout_margin="5dp"/>
+        
+        <TextView
+            android:id="@+id/tvCurrentMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TEST"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_weight="3"
+            android:layout_margin="5dp"/>
+
+        <ImageButton
+            android:id="@+id/ibNextMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/next_month_arrow_24dp"
+            android:layout_margin="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MON"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TUE"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WED"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="THU"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FRI"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SAT"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SUN"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/gvDates"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="7">
+
+    </GridView>
+
+</LinearLayout>

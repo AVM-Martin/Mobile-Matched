@@ -21,7 +21,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <CalendarView
-        android:id="@+id/calendar"
+        android:id="@+id/cvCalendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar">
@@ -29,10 +29,10 @@
     </CalendarView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listEvent"
+        android:id="@+id/rvListEvent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/calendar">
+        android:layout_below="@id/cvCalendar">
     </androidx.recyclerview.widget.RecyclerView>
 
     <Button
