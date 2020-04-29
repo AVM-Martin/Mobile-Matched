@@ -53,9 +53,12 @@ public class ScheduleManager extends SQLiteOpenHelper {
         }
     }
 
-    public List<Schedule> getScheduleByDate(Calendar date) throws Exception {
+    public List<Schedule> getScheduleByDate(int year, int month, int day) throws Exception {
+        Calendar startRange = Calendar.getInstance();
+        startRange.set(year, month, day, 0, 0, 0);
+
         Calendar endRange = Calendar.getInstance();
-        endRange.setTimeInMillis(date.getTimeInMillis());
+        endRange.setTimeInMillis(startRange.getTimeInMillis());
         endRange.add(Calendar.DATE, 1);
         endRange.setTimeInMillis(endRange.getTimeInMillis() - 1);
 
@@ -63,7 +66,7 @@ public class ScheduleManager extends SQLiteOpenHelper {
             START_TIME + " BETWEEN ? and ?"
         );
         String[] selection_args = {
-            Long.toString(date.getTimeInMillis()),
+            Long.toString(startRange.getTimeInMillis()),
             Long.toString(endRange.getTimeInMillis())
         };
 
@@ -80,17 +83,20 @@ public class ScheduleManager extends SQLiteOpenHelper {
         }
     }
 
-    public List<Schedule> getScheduleByMonth(Calendar date) throws Exception {
+    public List<Schedule> getScheduleByMonth(int year, int month) throws Exception {
+        Calendar startRange = Calendar.getInstance();
+        startRange.set(year, month, 1, 0, 0, 0);
+
         Calendar endRange = Calendar.getInstance();
-        endRange.setTimeInMillis(date.getTimeInMillis());
-        endRange.add(Calendar.MONTH, 1);
+        endRange.setTimeInMillis(startRange.getTimeInMillis());
+        endRange.add(Calendar.DATE, 1);
         endRange.setTimeInMillis(endRange.getTimeInMillis() - 1);
 
         String selection = (
             START_TIME + " BETWEEN ? and ?"
         );
         String[] selection_args = {
-            Long.toString(date.getTimeInMillis()),
+            Long.toString(startRange.getTimeInMillis()),
             Long.toString(endRange.getTimeInMillis())
         };
 
