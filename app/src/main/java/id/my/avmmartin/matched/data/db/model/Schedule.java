@@ -34,11 +34,11 @@ public class Schedule {
         setLocation(cursor.getString(cursor.getColumnIndex(LOCATION)));
 
         Calendar startTime = Calendar.getInstance();
-        startTime.setTimeInMillis(cursor.getInt(cursor.getColumnIndex(START_TIME))));
+        startTime.setTimeInMillis(cursor.getInt(cursor.getColumnIndex(START_TIME)));
         setStartTime(startTime);
 
         Calendar endTime = Calendar.getInstance();
-        startTime.setTimeInMillis(cursor.getInt(cursor.getColumnIndex(END_TIME))));
+        startTime.setTimeInMillis(cursor.getInt(cursor.getColumnIndex(END_TIME)));
         setEndTime(endTime);
     }
 
@@ -47,8 +47,8 @@ public class Schedule {
 
         contentValues.put(NAME, getName());
         contentValues.put(LOCATION, getLocation());
-        contentValues.put(START_TIME, getStartTime().getTimeInMillis()));
-        contentValues.put(END_TIME, getEndTime().getTimeInMillis()));
+        contentValues.put(START_TIME, getStartTime().getTimeInMillis());
+        contentValues.put(END_TIME, getEndTime().getTimeInMillis());
 
         return contentValues;
     }
