@@ -36,6 +36,11 @@ public class CommonUtils {
         return sdf.format(calendar.getTime());
     }
 
+    public static String toMonthFormat(Calendar calendar) {
+        SimpleDateFormat sdf = new SimpleDateFormat(Constants.MONTH_FORMAT, Locale.US);
+        return sdf.format(calendar.getTime());
+    }
+
     private CommonUtils() {
         // none
     }

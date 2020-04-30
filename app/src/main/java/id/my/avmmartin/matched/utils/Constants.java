@@ -1,14 +1,15 @@
 package id.my.avmmartin.matched.utils;
 
 public class Constants {
-    public final static String PACKAGE_NAME = "id.my.avmmartin.matched";
+    public static final String PACKAGE_NAME = "id.my.avmmartin.matched";
 
-    public final static String DB_NAME = "MatchedDB";
+    public static final String DB_NAME = "MatchedDB";
 
-    public final static int NEW_SCHEDULE_ID = -1;
+    public static final int NEW_SCHEDULE_ID = -1;
 
-    public final static String DATE_FORMAT = "dd MM yyyy";
-    public final static String TIME_FORMAT = "hh:mm";
+    public static final String DATE_FORMAT = "dd MM yyyy";
+    public static final String TIME_FORMAT = "hh:mm";
+    public static final String MONTH_FORMAT = "yyyy MMMM";
 
     private Constants() {
         // none

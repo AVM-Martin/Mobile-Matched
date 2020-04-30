@@ -7,33 +7,119 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import id.my.avmmartin.matched.R;
+import id.my.avmmartin.matched.components.base.BaseLinearLayout;
 import id.my.avmmartin.matched.data.db.model.Schedule;
+import id.my.avmmartin.matched.utils.CommonUtils;
 
-public class CustomCalendar extends LinearLayout {
-    private static int MAX_CALENDAR_DAYS = 42;
+public class CustomCalendar extends BaseLinearLayout implements MVPView {
+    private static final int MAX_CALENDAR_DAYS = 42;
 
-    ImageButton ibPreviousMonth, ibNextMonth;
-    TextView tvCurrentMonth;
-    GridView gvDates;
-    Calendar calendar = Calendar.getInstance();
-    Context context;
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy MMMM");
+    private ImageButton ibPreviousMonth;
+    private ImageButton ibNextMonth;
+    private TextView tvCurrentMonth;
+    private GridView gvDates;
 
-    CalendarAdapter calendarAdapter;
+    private CalendarAdapter calendarAdapter;
+    private Calendar selectedDate;
 
-    List<Date> dates = new ArrayList<>();
-    List<Schedule> schedules = new ArrayList<>();
+    public Calendar getSelectedDate() {
+        return selectedDate;
+    }
+
+    // mvp method
+
+    @Override
+    public void showPrevMonth() {
+        selectedDate.add(Calendar.MONTH, -1);
+        loadDatas();
+    }
+
+    @Override
+    public void showNextMonth() {
+        selectedDate.add(Calendar.MONTH, 1);
+        loadDatas();
+    }
+
+    @Override
+    public void selectDateAndLoadCalendar(int position) {
+        selectedDate = (Calendar) calendarAdapter.getItem(position);
+        loadDatas();
+    }
+
+    // overridden method
+
+    @Override
+    protected void initComponents() {
+        Context context = getContext();
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.calendar_layout, this);
+
+        ibPreviousMonth = view.findViewById(R.id.ibPreviousMonth);
+        ibNextMonth = view.findViewById(R.id.ibNextMonth);
+        tvCurrentMonth = view.findViewById(R.id.tvCurrentMonth);
+        gvDates = view.findViewById(R.id.gvDates);
+
+        selectedDate = Calendar.getInstance();
+    }
+
+    @Override
+    protected void loadDatas() {
+        tvCurrentMonth.setText(CommonUtils.toMonthFormat(selectedDate));
+
+        Calendar monthCalendar = (Calendar) selectedDate.clone();
+        monthCalendar.set(Calendar.DAY_OF_MONTH, 1);
+
+        int firstDayOfMonth = monthCalendar.get(Calendar.DAY_OF_WEEK) - 1;
+        monthCalendar.add(Calendar.DAY_OF_MONTH, -firstDayOfMonth);
+
+        int MAX_DAYS = MAX_CALENDAR_DAYS;
+        if (firstDayOfMonth + selectedDate.getActualMaximum(Calendar.DAY_OF_MONTH) < 36) {
+            MAX_DAYS = 35;
+        }
+
+        List<Calendar> dates = new ArrayList<>();
+        while (dates.size() < MAX_DAYS) {
+            dates.add(monthCalendar);
+            monthCalendar.add(Calendar.DAY_OF_MONTH, 1);
+        }
+
+        // TODO: get schedules here
+        List<Schedule> schedules = new ArrayList<>();
+
+        calendarAdapter = new CalendarAdapter(getContext(), dates, selectedDate, schedules);
+        gvDates.setAdapter(calendarAdapter);
+    }
+
+    @Override
+    protected void setEvents() {
+        ibPreviousMonth.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPrevMonth();
+            }
+        });
+        ibNextMonth.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showNextMonth();
+            }
+        });
+        gvDates.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectDateAndLoadCalendar(position);
+            }
+        });
+    }
+
+    // constructor
 
     public CustomCalendar(Context context) {
         super(context);
@@ -41,74 +127,9 @@ public class CustomCalendar extends LinearLayout {
 
     public CustomCalendar(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.context = context;
-        initializeLayout();
-
-
-        ibPreviousMonth.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calendar.add(Calendar.MONTH, -1);
-                setCalendar();
-            }
-        });
-
-        ibNextMonth.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calendar.add(Calendar.MONTH, 1);
-                setCalendar();
-            }
-        });
-
-        gvDates.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Date selectedDate = calendarAdapter.dates.get(position);
-                Toast.makeText(getContext(), String.valueOf(selectedDate), Toast.LENGTH_LONG).show();
-//                ((CalendarAdapter) parent.getAdapter()).getPosition(selectedDate, getContext().);
-            }
-        });
-
-
     }
 
     public CustomCalendar(Context context, AttributeSet attrs, int defStyleAttr, Context context1) {
         super(context, attrs, defStyleAttr);
-        this.context = context1;
     }
-
-    private void initializeLayout() {
-        LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.calendar_layout, this);
-        ibPreviousMonth = view.findViewById(R.id.ibPreviousMonth);
-        ibNextMonth = view.findViewById(R.id.ibNextMonth);
-        tvCurrentMonth = view.findViewById(R.id.tvCurrentMonth);
-        gvDates = view.findViewById(R.id.gvDates);
-
-        setCalendar();
-    }
-
-    private void setCalendar() {
-        String currentMonth = simpleDateFormat.format(calendar.getTime());
-        tvCurrentMonth.setText(currentMonth);
-
-        dates.clear();
-        Calendar monthCalendar = (Calendar) calendar.clone();
-        monthCalendar.set(Calendar.DAY_OF_MONTH, 1);
-        int firstDayOfMonth = monthCalendar.get(Calendar.DAY_OF_WEEK)-1;
-        monthCalendar.add(Calendar.DAY_OF_MONTH, -firstDayOfMonth);
-
-        if(firstDayOfMonth + calendar.getActualMaximum(Calendar.DAY_OF_MONTH) < 36) MAX_CALENDAR_DAYS = 35;
-        else MAX_CALENDAR_DAYS = 42;
-
-        while(dates.size() < MAX_CALENDAR_DAYS) {
-            dates.add(monthCalendar.getTime());
-            monthCalendar.add(Calendar.DAY_OF_MONTH, 1);
-        }
-
-        calendarAdapter = new CalendarAdapter(context, dates, calendar, schedules);
-        gvDates.setAdapter(calendarAdapter);
-    }
-
 }
