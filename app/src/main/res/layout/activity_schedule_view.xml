@@ -29,7 +29,7 @@
     </id.my.avmmartin.matched.utils.CustomCalendar>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvListEvent"
+        android:id="@+id/rvListSchedule"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/cvCalendar">
