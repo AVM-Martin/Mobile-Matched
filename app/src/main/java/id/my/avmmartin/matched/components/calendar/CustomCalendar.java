@@ -86,7 +86,7 @@ public class CustomCalendar extends BaseLinearLayout implements MVPView {
 
         List<Calendar> dates = new ArrayList<>();
         while (dates.size() < MAX_DAYS) {
-            dates.add(monthCalendar);
+            dates.add((Calendar) monthCalendar.clone());
             monthCalendar.add(Calendar.DAY_OF_MONTH, 1);
         }
 
