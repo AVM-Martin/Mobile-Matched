@@ -7,19 +7,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import id.my.avmmartin.matched.R;
+import id.my.avmmartin.matched.data.db.ScheduleManager;
+import id.my.avmmartin.matched.data.db.model.Schedule;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
+import id.my.avmmartin.matched.ui.schedule.view.Activity;
+import id.my.avmmartin.matched.utils.CommonUtils;
 
-public class AddActivity extends BaseActivity<Presenter> implements MVPView {
+public class AddActivity extends BaseActivity<Presenter> implements MVPView, View.OnClickListener {
 
-    TextView tvStartDate, tvStartTime;
-    Calendar calendar = Calendar.getInstance();
+    EditText etEventName, etEventLocation;
+    TextView tvEventStartDate, tvEventStartTime;
+    TextView tvEventEndDate, tvEventEndTime;
+    ImageButton ibCancelSchedule, ibAddSchedule;
+    Calendar startTime = Calendar.getInstance();
+    Calendar endTime = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +38,27 @@ public class AddActivity extends BaseActivity<Presenter> implements MVPView {
         super.onCreate(savedInstanceState);
 
 
+
     }
 
 
     @Override
     protected void initComponents() {
-        tvStartDate = findViewById(R.id.tvStartDate);
-        tvStartTime = findViewById(R.id.tvStartTime);
+        etEventName = findViewById(R.id.etEventName);
+        etEventLocation = findViewById(R.id.etEventLocation);
 
+        tvEventStartDate = findViewById(R.id.tvEventStartDate);
+        tvEventStartTime = findViewById(R.id.tvEventStartTime);
+        tvEventStartDate.setText(CommonUtils.toDateFormat(startTime));
+        tvEventStartTime.setText(CommonUtils.toTimeFormat(startTime));
+
+        tvEventEndDate = findViewById(R.id.tvEventEndDate);
+        tvEventEndTime = findViewById(R.id.tvEventEndTime);
+        tvEventEndDate.setText(CommonUtils.toDateFormat(endTime));
+        tvEventEndTime.setText(CommonUtils.toTimeFormat(endTime));
+
+        ibAddSchedule = findViewById(R.id.ibAddSchedule);
+        ibCancelSchedule = findViewById(R.id.ibCancelSchedule);
     }
 
     @Override
@@ -44,7 +68,8 @@ public class AddActivity extends BaseActivity<Presenter> implements MVPView {
 
     @Override
     protected void setEvents() {
-
+        ibCancelSchedule.setOnClickListener(this);
+        ibAddSchedule.setOnClickListener(this);
     }
 
     @Override
@@ -53,7 +78,7 @@ public class AddActivity extends BaseActivity<Presenter> implements MVPView {
     }
 
 
-    public void setStartDate(View view) {
+    public void setDate(View view, final Calendar calendar, final TextView fill) {
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(AddActivity.this, new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -61,8 +86,7 @@ public class AddActivity extends BaseActivity<Presenter> implements MVPView {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                SimpleDateFormat df = new SimpleDateFormat("dd MMMM yyyy");
-                tvStartDate.setText(df.format(calendar.getTime()));
+                fill.setText(CommonUtils.toDateFormat(calendar));
             }
         },
             calendar.get(Calendar.YEAR),
@@ -72,11 +96,13 @@ public class AddActivity extends BaseActivity<Presenter> implements MVPView {
         datePickerDialog.show();
     }
 
-    public void setStartTime(View view) {
+    public void setTime(View view, final Calendar calendar, final TextView fill) {
         TimePickerDialog timePickerDialog = new TimePickerDialog(AddActivity.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                tvStartTime.setText(hourOfDay + ":" + minute);
+                calendar.set(Calendar.HOUR, hourOfDay);
+                calendar.set(Calendar.MINUTE, minute);
+                fill.setText(CommonUtils.toTimeFormat(calendar));
             }
         },
             calendar.get(Calendar.HOUR),
@@ -85,5 +111,41 @@ public class AddActivity extends BaseActivity<Presenter> implements MVPView {
         );
 
         timePickerDialog.show();
+    }
+
+    public void setStartDate(View view) {
+        setDate(view, startTime, tvEventStartDate);
+    }
+
+    public void setStartTime(View view) {
+        setTime(view, startTime, tvEventStartTime);
+    }
+
+    public void setEndDate(View view) {
+        setDate(view, endTime, tvEventEndDate);
+    }
+
+    public void setEndTime(View view) {
+        setTime(view, endTime, tvEventEndTime);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == ibAddSchedule.getId()) {
+            try {
+                Schedule schedule = new Schedule(etEventName.getText().toString(), etEventLocation.getText().toString(), startTime, endTime);
+                ScheduleManager scheduleManager = new ScheduleManager(this);
+                scheduleManager.insertSchedule(schedule);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if(v.getId() == ibCancelSchedule.getId()) {
+
+        }
+        Intent intent = new Intent(this, Activity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+
     }
 }

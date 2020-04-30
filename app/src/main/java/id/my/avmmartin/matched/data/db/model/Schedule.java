@@ -93,14 +93,18 @@ public class Schedule {
 
     private void setName(String name) throws Exception {
         if (name.equals("")) {
-            throw new Exception();
+            this.name = "No Title";
         } else {
             this.name = name;
         }
     }
 
     private void setLocation(String location) throws Exception {
-        this.location = location;
+        if(location.equals("")) {
+            this.location = "No Location";
+        } else {
+            this.location = location;
+        }
     }
 
     private void setStartTime(Calendar startTime) throws Exception {
