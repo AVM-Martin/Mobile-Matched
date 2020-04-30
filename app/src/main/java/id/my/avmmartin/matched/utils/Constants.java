@@ -11,6 +11,8 @@ public class Constants {
     public static final String TIME_FORMAT = "hh:mm";
     public static final String MONTH_FORMAT = "yyyy MMMM";
 
+    public static final String INTENT_SELECTED_DATE = PACKAGE_NAME + ".SELECTED_DATE";
+
     private Constants() {
         // none
     }
