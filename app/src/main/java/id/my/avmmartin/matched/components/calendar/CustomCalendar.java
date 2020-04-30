@@ -16,6 +16,7 @@ import java.util.List;
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.components.base.BaseLinearLayout;
 import id.my.avmmartin.matched.data.db.model.Schedule;
+import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.utils.CommonUtils;
 
 public class CustomCalendar extends BaseLinearLayout implements MVPView {
@@ -49,7 +50,16 @@ public class CustomCalendar extends BaseLinearLayout implements MVPView {
 
     @Override
     public void selectDate(int position) {
-        selectedDate = (Calendar) calendarAdapter.getItem(position);
+        Calendar newSelectedDate = (Calendar) calendarAdapter.getItem(position);
+        assert newSelectedDate != null;
+
+        if (newSelectedDate.get(Calendar.MONTH) == selectedDate.get(Calendar.MONTH)) {
+            selectedDate = newSelectedDate;
+
+        } else {
+            // TODO: handle this thing
+            ((BaseActivity) getContext()).showMessage("Select date on this month");
+        }
     }
 
     // overridden method
