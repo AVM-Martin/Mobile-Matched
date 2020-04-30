@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-public class BaseLinearLayout extends LinearLayout implements BaseMVPView {
+public abstract class BaseLinearLayout extends LinearLayout implements BaseMVPView {
 
     protected abstract void initComponents();
     protected abstract void loadDatas();
