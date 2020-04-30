@@ -48,9 +48,8 @@ public class CustomCalendar extends BaseLinearLayout implements MVPView {
     }
 
     @Override
-    public void selectDateAndLoadCalendar(int position) {
+    public void selectDate(int position) {
         selectedDate = (Calendar) calendarAdapter.getItem(position);
-        loadDatas();
     }
 
     // overridden method
@@ -114,7 +113,7 @@ public class CustomCalendar extends BaseLinearLayout implements MVPView {
         gvDates.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectDateAndLoadCalendar(position);
+                selectDate(position);
             }
         });
     }
