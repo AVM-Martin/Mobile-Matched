@@ -37,7 +37,8 @@ public class SyncEventManager {
     private String username;
 
     private SyncEventManager(String username) {
-        table = FirebaseFirestore.getInstance().collection(TABLE_NAME);
+        this.table = FirebaseFirestore.getInstance().collection(TABLE_NAME);
+        this.username = username;
     }
 
     public static SyncEventManager getInstance(String username) {

@@ -1,4 +1,4 @@
-package id.my.avmmartin.matched.utils;
+package id.my.avmmartin.matched.components.calendar;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -12,38 +12,29 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.zip.Inflater;
 
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.data.db.model.Schedule;
 
-public class CalendarAdapter extends ArrayAdapter {
-    List<Date> dates;
-    Calendar currentDate;
-    List<Schedule> schedules;
-    LayoutInflater inflater;
+class CalendarAdapter extends ArrayAdapter {
+    private List<Calendar> dates;
+    private Calendar currentDate;
+    private List<Schedule> schedules;
+    private LayoutInflater inflater;
 
-    public CalendarAdapter(@NonNull Context context, List<Date> dates, Calendar currentDate, List<Schedule> schedules) {
-        super(context, R.layout.single_day_layout);
-
-        this.dates = dates;
-        this.currentDate = currentDate;
-        this.schedules = schedules;
-        inflater = LayoutInflater.from(context);
-    }
+    // overridden method
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Date monthDate = dates.get(position);
-        Calendar dateCalendar = Calendar.getInstance();
-        dateCalendar.setTime(monthDate);
+        Calendar dateCalendar = dates.get(position);
+
         int day = dateCalendar.get(Calendar.DAY_OF_MONTH);
-        int displayMonth = dateCalendar.get(Calendar.MONTH)+1;
+        int displayMonth = dateCalendar.get(Calendar.MONTH);
         int displayYear = dateCalendar.get(Calendar.YEAR);
-        int currentMonth = currentDate.get(Calendar.MONTH)+1;
+
+        int currentMonth = currentDate.get(Calendar.MONTH);
         int currentYear = currentDate.get(Calendar.YEAR);
 
         View view = convertView;
@@ -54,6 +45,7 @@ public class CalendarAdapter extends ArrayAdapter {
         TextView tvDay = view.findViewById(R.id.tvDay);
         tvDay.setText(String.valueOf(day));
 
+        // TODO: remove hard code
         if(displayMonth == currentMonth && displayYear == currentYear){
             tvDay.setTextColor(Color.parseColor("#000000"));
         }
@@ -78,5 +70,16 @@ public class CalendarAdapter extends ArrayAdapter {
     @Override
     public Object getItem(int position) {
         return dates.get(position);
+    }
+
+    // constructor
+
+    CalendarAdapter(@NonNull Context context, List<Calendar> dates, Calendar currentDate, List<Schedule> schedules) {
+        super(context, R.layout.single_day_layout);
+
+        this.dates = dates;
+        this.currentDate = currentDate;
+        this.schedules = schedules;
+        this.inflater = LayoutInflater.from(context);
     }
 }

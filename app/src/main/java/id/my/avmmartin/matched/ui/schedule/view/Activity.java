@@ -10,18 +10,36 @@ import androidx.recyclerview.widget.RecyclerView;
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.ui.schedule.add.AddActivity;
-import id.my.avmmartin.matched.utils.CustomCalendar;
+import id.my.avmmartin.matched.components.calendar.CustomCalendar;
+import id.my.avmmartin.matched.utils.Constants;
 
 public class Activity extends BaseActivity<Presenter> implements MVPView {
-    CustomCalendar cvCalendar;
-    ImageButton ibAddSchedule;
-    RecyclerView rvListSchedule;
+    private CustomCalendar cvCalendar;
+    private ImageButton ibAddSchedule;
+    private RecyclerView rvListSchedule;
+
+    // mvp method
+
+    @Override
+    public void addNewScheduleActivity() {
+        Intent intent = new Intent(Activity.this, AddActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra(Constants.INTENT_SELECTED_DATE, cvCalendar.getSelectedDate().getTimeInMillis());
+        startActivity(intent);
+    }
+
+    // overridden method
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_schedule_view);
         super.onCreate(savedInstanceState);
+    }
 
+    @Override
+    protected void onResume() {
+        loadData();
+        super.onResume();
     }
 
     @Override
@@ -33,7 +51,7 @@ public class Activity extends BaseActivity<Presenter> implements MVPView {
 
     @Override
     protected void loadData() {
-
+        // none
     }
 
     @Override
@@ -41,9 +59,7 @@ public class Activity extends BaseActivity<Presenter> implements MVPView {
         ibAddSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Activity.this, AddActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                addNewScheduleActivity();
             }
         });
     }

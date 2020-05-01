@@ -20,13 +20,13 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <id.my.avmmartin.matched.utils.CustomCalendar
+    <id.my.avmmartin.matched.components.calendar.CustomCalendar
         android:id="@+id/cvCalendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar">
 
-    </id.my.avmmartin.matched.utils.CustomCalendar>
+    </id.my.avmmartin.matched.components.calendar.CustomCalendar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvListSchedule"
