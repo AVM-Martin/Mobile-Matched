@@ -6,5 +6,5 @@ interface MVPView extends BaseMVPView {
     void showPrevMonth();
     void showNextMonth();
 
-    void selectDate(int position);
+    void selectDateAndLoadData(int position);
 }
