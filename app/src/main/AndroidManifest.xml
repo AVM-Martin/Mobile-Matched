@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.schedule.add.AddActivity"></activity>
+        <activity android:name=".ui.approve.list.ApprovalActivity"></activity>
+        <activity android:name=".ui.schedule.add.AddActivity" />
         <activity android:name=".ui.schedule.view.Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
