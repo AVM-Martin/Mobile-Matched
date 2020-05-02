@@ -2,10 +2,27 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <!-- Custom Calendar style -->
+
+    <style name="CustomCalendar" />
+
+    <style name="CustomCalendar.Today">
+        <item name="android:background">@color/lightblue</item>
+    </style>
+
+    <style name="CustomCalendar.ThisMonth">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="CustomCalendar.OtherMonth">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
 
 </resources>
