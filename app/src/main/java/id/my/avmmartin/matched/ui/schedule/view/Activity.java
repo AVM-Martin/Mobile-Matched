@@ -5,12 +5,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Calendar;
+
 import id.my.avmmartin.matched.R;
+import id.my.avmmartin.matched.components.calendar.CustomCalendar;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.ui.schedule.add.AddActivity;
-import id.my.avmmartin.matched.components.calendar.CustomCalendar;
+import id.my.avmmartin.matched.ui.schedule.view.list.Adapter;
 import id.my.avmmartin.matched.utils.Constants;
 
 public class Activity extends BaseActivity<Presenter> implements MVPView {
@@ -18,14 +22,21 @@ public class Activity extends BaseActivity<Presenter> implements MVPView {
     private ImageButton ibAddSchedule;
     private RecyclerView rvListSchedule;
 
+    private Adapter adapter;
+
     // mvp method
 
     @Override
     public void addNewScheduleActivity() {
         Intent intent = new Intent(Activity.this, AddActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra(Constants.INTENT_SELECTED_DATE, cvCalendar.getSelectedDate().getTimeInMillis());
+        intent.putExtra(Constants.INTENT_SELECTED_DATE, getSelectedDate().getTimeInMillis());
         startActivity(intent);
+    }
+
+    @Override
+    public Calendar getSelectedDate() {
+        return cvCalendar.getSelectedDate();
     }
 
     // overridden method
@@ -47,11 +58,25 @@ public class Activity extends BaseActivity<Presenter> implements MVPView {
         cvCalendar = findViewById(R.id.cvCalendar);
         ibAddSchedule = findViewById(R.id.ibAddSchedule);
         rvListSchedule = findViewById(R.id.rvListSchedule);
+
+        cvCalendar.setListener(new CustomCalendar.Listener() {
+            @Override
+            public void onDateClick() {
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
     protected void loadData() {
-        // none
+        try {
+            adapter = new Adapter(this);
+            rvListSchedule.setLayoutManager(new LinearLayoutManager(this));
+            rvListSchedule.setAdapter(adapter);
+
+        } catch (Exception e) {
+            showMessage("ERROR OCCURRED");
+        }
     }
 
     @Override

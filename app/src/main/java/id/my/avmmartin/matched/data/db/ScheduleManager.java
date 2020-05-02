@@ -29,6 +29,28 @@ public class ScheduleManager extends SQLiteOpenHelper {
         }
     }
 
+    public int sizeByDate(int year, int month, int day) {
+        Calendar startRange = Calendar.getInstance();
+        startRange.set(year, month, day, 0, 0, 0);
+
+        Calendar endRange = Calendar.getInstance();
+        endRange.setTimeInMillis(startRange.getTimeInMillis());
+        endRange.add(Calendar.DATE, 1);
+        endRange.setTimeInMillis(endRange.getTimeInMillis() - 1);
+
+        String selection = (
+            START_TIME + " BETWEEN ? and ?"
+        );
+        String[] selection_args = {
+            Long.toString(startRange.getTimeInMillis()),
+            Long.toString(endRange.getTimeInMillis())
+        };
+
+        try (SQLiteDatabase db = getReadableDatabase()) {
+            return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME, selection, selection_args);
+        }
+    }
+
     // create read update delete
 
     public void insertSchedule(Schedule schedule) {

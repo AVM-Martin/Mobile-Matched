@@ -15,11 +15,14 @@ import java.util.List;
 
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.components.base.BaseLinearLayout;
-import id.my.avmmartin.matched.data.db.model.Schedule;
-import id.my.avmmartin.matched.ui.base.BaseActivity;
+import id.my.avmmartin.matched.components.base.BaseListener;
 import id.my.avmmartin.matched.utils.CommonUtils;
 
 public class CustomCalendar extends BaseLinearLayout implements MVPView {
+    public interface Listener extends BaseListener {
+        void onDateClick();
+    }
+
     private static final int MAX_CALENDAR_DAYS = 42;
 
     private ImageButton ibPreviousMonth;
@@ -29,6 +32,12 @@ public class CustomCalendar extends BaseLinearLayout implements MVPView {
 
     private CalendarAdapter calendarAdapter;
     private Calendar selectedDate;
+
+    private Listener listener;
+
+    public void setListener(Listener listener) {
+        this.listener = listener;
+    }
 
     public Calendar getSelectedDate() {
         return selectedDate;
@@ -49,17 +58,13 @@ public class CustomCalendar extends BaseLinearLayout implements MVPView {
     }
 
     @Override
-    public void selectDate(int position) {
+    public void selectDateAndLoadData(int position) {
         Calendar newSelectedDate = (Calendar) calendarAdapter.getItem(position);
         assert newSelectedDate != null;
 
-        if (newSelectedDate.get(Calendar.MONTH) == selectedDate.get(Calendar.MONTH)) {
-            selectedDate = newSelectedDate;
-
-        } else {
-            // TODO: handle this thing
-            ((BaseActivity) getContext()).showMessage("Select date on this month");
-        }
+        selectedDate = newSelectedDate;
+        loadDatas();
+        listener.onDateClick();
     }
 
     // overridden method
@@ -99,10 +104,7 @@ public class CustomCalendar extends BaseLinearLayout implements MVPView {
             monthCalendar.add(Calendar.DAY_OF_MONTH, 1);
         }
 
-        // TODO: get schedules here
-        List<Schedule> schedules = new ArrayList<>();
-
-        calendarAdapter = new CalendarAdapter(getContext(), dates, selectedDate, schedules);
+        calendarAdapter = new CalendarAdapter(getContext(), dates, selectedDate);
         gvDates.setAdapter(calendarAdapter);
     }
 
@@ -123,7 +125,7 @@ public class CustomCalendar extends BaseLinearLayout implements MVPView {
         gvDates.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectDate(position);
+                selectDateAndLoadData(position);
             }
         });
     }
@@ -136,9 +138,5 @@ public class CustomCalendar extends BaseLinearLayout implements MVPView {
 
     public CustomCalendar(Context context, AttributeSet attrs) {
         super(context, attrs);
-    }
-
-    public CustomCalendar(Context context, AttributeSet attrs, int defStyleAttr, Context context1) {
-        super(context, attrs, defStyleAttr);
     }
 }
