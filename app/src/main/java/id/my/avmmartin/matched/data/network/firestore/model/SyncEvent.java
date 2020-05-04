@@ -2,6 +2,8 @@ package id.my.avmmartin.matched.data.network.firestore.model;
 
 import java.util.Calendar;
 
+import id.my.avmmartin.matched.exception.NoTitleException;
+
 public class SyncEvent {
     private String name;
     private String location;
@@ -15,7 +17,13 @@ public class SyncEvent {
         // default constructor
     }
 
-    public SyncEvent(String name, String location, Calendar startTime, Calendar endTime, String username) throws Exception {
+    public SyncEvent(
+            String name,
+            String location,
+            Calendar startTime,
+            Calendar endTime,
+            String username
+    ) throws NoTitleException {
         setName(name);
         setLocation(location);
         setStartTime(startTime);
@@ -47,27 +55,27 @@ public class SyncEvent {
 
     // setter
 
-    private void setName(String name) throws Exception {
+    private void setName(String name) throws NoTitleException {
         if (name.equals("")) {
-            throw new Exception();
+            throw new NoTitleException();
         } else {
             this.name = name;
         }
     }
 
-    private void setLocation(String location) throws Exception {
+    private void setLocation(String location) {
         this.location = location;
     }
 
-    private void setStartTime(Calendar startTime) throws Exception {
+    private void setStartTime(Calendar startTime) {
         this.startTime = startTime;
     }
 
-    private void setEndTime(Calendar endTime) throws Exception {
+    private void setEndTime(Calendar endTime) {
         this.endTime = endTime;
     }
 
-    private void setCreatorUsersFK(String username) throws Exception {
+    private void setCreatorUsersFK(String username) {
         this.creatorUsersFK = username;
     }
 }

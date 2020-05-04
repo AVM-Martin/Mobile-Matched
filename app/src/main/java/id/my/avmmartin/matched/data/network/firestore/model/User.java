@@ -6,11 +6,11 @@ public class User {
     private String name;
     private String hashPassword;
 
-    public boolean isValidPassword(String password) throws Exception {
+    public boolean isValidPassword(String password) {
         return getHashPassword().equals(HashUtils.sha512(password));
     }
 
-    public void setPassword(String password) throws Exception {
+    public void setPassword(String password) {
         setHashPassword(HashUtils.sha512(password));
     }
 
@@ -20,7 +20,7 @@ public class User {
         // default constructor
     }
 
-    public User(String name, String password) throws Exception {
+    public User(String name, String password) {
         setName(name);
         setPassword(password);
     }
@@ -37,15 +37,11 @@ public class User {
 
     // setter
 
-    private void setName(String name) throws Exception {
-        if (name.equals("")) {
-            throw new Exception();
-        } else {
-            this.name = name;
-        }
+    private void setName(String name) {
+        this.name = name;
     }
 
-    private void setHashPassword(String hashPassword) throws Exception {
+    private void setHashPassword(String hashPassword) {
         this.hashPassword = hashPassword;
     }
 }

@@ -9,6 +9,7 @@ import id.my.avmmartin.matched.data.db.model.Schedule;
 import id.my.avmmartin.matched.data.network.firestore.UserManager;
 import id.my.avmmartin.matched.data.network.firestore.model.User;
 import id.my.avmmartin.matched.data.prefs.PreferencesHelper;
+import id.my.avmmartin.matched.exception.DataIntegrityException;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.utils.LoadDataUtils;
 
@@ -27,11 +28,11 @@ public final class DataManager {
         scheduleManager.insertSchedule(schedule);
     }
 
-    public Schedule getScheduleById(int id) throws Exception {
+    public Schedule getScheduleById(int id) throws DataIntegrityException {
         return scheduleManager.getScheduleById(id);
     }
 
-    public List<Schedule> getScheduleByDate(int year, int month, int day) throws Exception {
+    public List<Schedule> getScheduleByDate(int year, int month, int day) throws DataIntegrityException {
         return scheduleManager.getScheduleByDate(year, month, day);
     }
 

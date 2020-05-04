@@ -11,11 +11,12 @@ import java.util.Calendar;
 import java.util.List;
 
 import id.my.avmmartin.matched.data.db.model.Schedule;
+import id.my.avmmartin.matched.exception.DataIntegrityException;
 import id.my.avmmartin.matched.utils.Constants;
 
 public class ScheduleManager extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "schedule";
-    private static final int VERSION = 2;
+    private static final int VERSION = 1;
 
     public static final String ID = "id";
     public static final String NAME = "name";
@@ -59,7 +60,7 @@ public class ScheduleManager extends SQLiteOpenHelper {
         }
     }
 
-    public Schedule getScheduleById(int id) throws Exception {
+    public Schedule getScheduleById(int id) throws DataIntegrityException {
         String selection = (
             ID + " = ?"
         );
@@ -75,7 +76,7 @@ public class ScheduleManager extends SQLiteOpenHelper {
         }
     }
 
-    public List<Schedule> getScheduleByDate(int year, int month, int day) throws Exception {
+    public List<Schedule> getScheduleByDate(int year, int month, int day) throws DataIntegrityException {
         Calendar startRange = Calendar.getInstance();
         startRange.set(year, month, day, 0, 0, 0);
 
@@ -105,7 +106,7 @@ public class ScheduleManager extends SQLiteOpenHelper {
         }
     }
 
-    public List<Schedule> getScheduleByMonth(int year, int month) throws Exception {
+    public List<Schedule> getScheduleByMonth(int year, int month) throws DataIntegrityException {
         Calendar startRange = Calendar.getInstance();
         startRange.set(year, month, 1, 0, 0, 0);
 

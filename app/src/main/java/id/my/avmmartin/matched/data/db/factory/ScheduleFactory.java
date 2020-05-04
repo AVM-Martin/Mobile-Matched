@@ -7,6 +7,8 @@ import java.util.Random;
 
 import id.my.avmmartin.matched.data.db.ScheduleManager;
 import id.my.avmmartin.matched.data.db.model.Schedule;
+import id.my.avmmartin.matched.exception.InvalidDurationException;
+import id.my.avmmartin.matched.exception.NoTitleException;
 
 public class ScheduleFactory {
     public static void generate(Context context) {
@@ -36,7 +38,9 @@ public class ScheduleFactory {
                         startTime,
                         endTime
                     ));
-                } catch (Exception e) {
+                } catch (NoTitleException e) {
+                    //
+                } catch (InvalidDurationException e) {
                     //
                 }
             }
