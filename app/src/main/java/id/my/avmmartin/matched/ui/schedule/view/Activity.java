@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +13,7 @@ import java.util.Calendar;
 
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.components.calendar.CustomCalendar;
+import id.my.avmmartin.matched.data.db.factory.ScheduleFactory;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.ui.schedule.add.AddActivity;
 import id.my.avmmartin.matched.ui.schedule.view.list.Adapter;
@@ -58,13 +60,15 @@ public class Activity extends BaseActivity<Presenter> implements MVPView {
         cvCalendar = findViewById(R.id.cvCalendar);
         ibAddSchedule = findViewById(R.id.ibAddSchedule);
         rvListSchedule = findViewById(R.id.rvListSchedule);
-
         cvCalendar.setListener(new CustomCalendar.Listener() {
             @Override
             public void onDateClick() {
                 adapter.notifyDataSetChanged();
             }
         });
+
+        ImageView ivHome = findViewById(R.id.ivHome);
+        ivHome.setImageResource(R.drawable.home_selected_24dp);
     }
 
     @Override

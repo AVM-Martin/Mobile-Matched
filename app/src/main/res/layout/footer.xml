@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorToolbar">
+
+    <ImageView
+        android:id="@+id/ivHome"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/home_24dp"
+        android:layout_margin="5dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"/>
+
+    <ImageView
+        android:id="@+id/ivApproval"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/notification_24dp"
+        android:layout_margin="5dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"/>
+
+    <ImageView
+        android:id="@+id/ivFreeSchedule"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/list_event_24dp"
+        android:layout_margin="5dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"/>
+
+    <ImageView
+        android:id="@+id/ivAccount"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/account_24dp"
+        android:layout_margin="5dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"/>
+
+
+
+
+
+
+
+</LinearLayout>

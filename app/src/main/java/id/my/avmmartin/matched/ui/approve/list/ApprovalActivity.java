@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import id.my.avmmartin.matched.R;
@@ -25,6 +26,9 @@ public class ApprovalActivity extends BaseActivity<Presenter> implements MVPView
     @Override
     protected void initComponents() {
         rvListApproval = findViewById(R.id.rvListApproval);
+
+        ImageView ivApproval = findViewById(R.id.ivApproval);
+        ivApproval.setImageResource(R.drawable.notifications_selected_24dp);
     }
 
     @Override

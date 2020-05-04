@@ -43,10 +43,9 @@ public class CommonUtils {
         return sdf.format(calendar.getTime());
     }
 
-    public static List<Calendar> compareSchedule(List<Calendar> schedules1, List<Calendar> schedules2) {
-        List<Calendar> listFreeSchedules = new ArrayList<>();
-
-        return listFreeSchedules;
+    public static int toMinuteFormat(Calendar calendar) {
+        String temp = toTimeFormat(calendar);
+        return Integer.valueOf(temp.substring(0,2)) * 60 + Integer.valueOf(temp.substring(3,2));
     }
 
     private CommonUtils() {

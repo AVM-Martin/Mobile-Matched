@@ -6,19 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.schedule.view.Activity">
 
-    <androidx.appcompat.widget.Toolbar
+    <include
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorToolbar">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MATCHED"
-            android:gravity="center"/>
-
-    </androidx.appcompat.widget.Toolbar>
+        layout="@layout/header"
+        android:layout_alignParentTop="true"/>
 
     <id.my.avmmartin.matched.components.calendar.CustomCalendar
         android:id="@+id/cvCalendar"
@@ -43,7 +36,15 @@
         android:background="@drawable/add_24dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_margin="30dp"/>
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="60dp"/>
 
+
+    <id.my.avmmartin.matched.components.footer.CustomFooter
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+    </id.my.avmmartin.matched.components.footer.CustomFooter>
 
 </RelativeLayout>

@@ -22,6 +22,7 @@ import id.my.avmmartin.matched.data.db.model.Schedule;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.ui.schedule.view.Activity;
 import id.my.avmmartin.matched.utils.CommonUtils;
+import id.my.avmmartin.matched.utils.Constants;
 
 public class AddActivity extends BaseActivity<Presenter> implements MVPView, View.OnClickListener {
 
@@ -44,11 +45,17 @@ public class AddActivity extends BaseActivity<Presenter> implements MVPView, Vie
 
     @Override
     protected void initComponents() {
+        Intent intent = getIntent();
+        startTime.setTimeInMillis(intent.getLongExtra(Constants.INTENT_SELECTED_DATE, 0));
+        endTime.setTimeInMillis(intent.getLongExtra(Constants.INTENT_SELECTED_DATE, 0));
+
+
         etEventName = findViewById(R.id.etEventName);
         etEventLocation = findViewById(R.id.etEventLocation);
 
         tvEventStartDate = findViewById(R.id.tvEventStartDate);
         tvEventStartTime = findViewById(R.id.tvEventStartTime);
+
         tvEventStartDate.setText(CommonUtils.toDateFormat(startTime));
         tvEventStartTime.setText(CommonUtils.toTimeFormat(startTime));
 
