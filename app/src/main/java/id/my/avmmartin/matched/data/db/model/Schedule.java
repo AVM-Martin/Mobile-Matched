@@ -47,11 +47,11 @@ public class Schedule {
         setStartTime(startTime);
 
         Calendar endTime = Calendar.getInstance();
-        startTime.setTimeInMillis(cursor.getLong(cursor.getColumnIndex(END_TIME)));
+        endTime.setTimeInMillis(cursor.getLong(cursor.getColumnIndex(END_TIME)));
         setEndTime(endTime);
 
-        if (startTime.before(endTime)) {
-            throw new DataIntegrityException("Duration");
+        if (startTime.after(endTime)) {
+            throw new DataIntegrityException("Duration ho");
         }
     }
 
@@ -80,7 +80,7 @@ public class Schedule {
         setStartTime(startTime);
         setEndTime(endTime);
 
-        if (startTime.before(endTime)) {
+        if (startTime.after(endTime)) {
             throw new InvalidDurationException();
         }
     }
