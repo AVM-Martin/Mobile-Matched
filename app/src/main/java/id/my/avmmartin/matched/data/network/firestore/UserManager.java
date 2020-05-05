@@ -5,12 +5,14 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.concurrent.ExecutionException;
+
 import id.my.avmmartin.matched.data.network.firestore.model.User;
 
 public class UserManager {
     private static final String TABLE_NAME = "users";
 
-    public User getUser() throws Exception {
+    public User getUser() throws ExecutionException, InterruptedException {
         return Tasks.await(tableRow.get()).toObject(User.class);
     }
 

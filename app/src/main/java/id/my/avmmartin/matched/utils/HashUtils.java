@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class HashUtils {
-    public static String sha512(String string) throws Exception {
+    public static String sha512(String string) {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-512");
             byte[] message = messageDigest.digest(string.getBytes());

@@ -12,6 +12,7 @@ import java.util.List;
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.data.DataManager;
 import id.my.avmmartin.matched.data.db.model.Schedule;
+import id.my.avmmartin.matched.exception.DataIntegrityException;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.ui.base.BaseRecyclerViewAdapter;
 import id.my.avmmartin.matched.ui.schedule.view.MVPView;
@@ -42,8 +43,8 @@ public class Adapter extends BaseRecyclerViewAdapter<ViewHolder> {
             holder.bindData(schedules.get(position));
             super.onBindViewHolder(holder, position);
 
-        } catch (Exception e) {
-            activity.showMessage("ERROR OCCURRED");
+        } catch (DataIntegrityException e) {
+            activity.showMessage(e.getMessage());
         }
     }
 

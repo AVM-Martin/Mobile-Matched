@@ -6,6 +6,9 @@ import android.database.Cursor;
 import java.util.Calendar;
 
 import id.my.avmmartin.matched.data.db.ScheduleManager;
+import id.my.avmmartin.matched.exception.DataIntegrityException;
+import id.my.avmmartin.matched.exception.InvalidDurationException;
+import id.my.avmmartin.matched.exception.NoTitleException;
 import id.my.avmmartin.matched.utils.Constants;
 
 public class Schedule {
@@ -28,18 +31,28 @@ public class Schedule {
 
     // database-related method
 
-    public Schedule(Cursor cursor) throws Exception {
+    public Schedule(Cursor cursor) throws DataIntegrityException {
         setId(cursor.getInt(cursor.getColumnIndex(ID)));
-        setName(cursor.getString(cursor.getColumnIndex(NAME)));
+
+        try {
+            setName(cursor.getString(cursor.getColumnIndex(NAME)));
+        } catch (NoTitleException e) {
+            throw new DataIntegrityException("Title");
+        }
+
         setLocation(cursor.getString(cursor.getColumnIndex(LOCATION)));
 
         Calendar startTime = Calendar.getInstance();
-        startTime.setTimeInMillis(cursor.getInt(cursor.getColumnIndex(START_TIME)));
+        startTime.setTimeInMillis(cursor.getLong(cursor.getColumnIndex(START_TIME)));
         setStartTime(startTime);
 
         Calendar endTime = Calendar.getInstance();
-        startTime.setTimeInMillis(cursor.getInt(cursor.getColumnIndex(END_TIME)));
+        endTime.setTimeInMillis(cursor.getLong(cursor.getColumnIndex(END_TIME)));
         setEndTime(endTime);
+
+        if (startTime.after(endTime)) {
+            throw new DataIntegrityException("Duration ho");
+        }
     }
 
     public ContentValues toContentValues() {
@@ -55,12 +68,21 @@ public class Schedule {
 
     // constructor
 
-    public Schedule(String name, String location, Calendar startTime, Calendar endTime) throws Exception {
+    public Schedule(
+            String name,
+            String location,
+            Calendar startTime,
+            Calendar endTime
+    ) throws NoTitleException, InvalidDurationException {
         setId(NEW_SCHEDULE_ID);
         setName(name);
         setLocation(location);
         setStartTime(startTime);
         setEndTime(endTime);
+
+        if (startTime.after(endTime)) {
+            throw new InvalidDurationException();
+        }
     }
 
     // getter
@@ -91,27 +113,23 @@ public class Schedule {
         this.id = id;
     }
 
-    private void setName(String name) throws Exception {
+    private void setName(String name) throws NoTitleException {
         if (name.equals("")) {
-            this.name = "No Title";
+            throw new NoTitleException();
         } else {
             this.name = name;
         }
     }
 
-    private void setLocation(String location) throws Exception {
-        if(location.equals("")) {
-            this.location = "No Location";
-        } else {
-            this.location = location;
-        }
+    private void setLocation(String location) {
+        this.location = location;
     }
 
-    private void setStartTime(Calendar startTime) throws Exception {
+    private void setStartTime(Calendar startTime) {
         this.startTime = startTime;
     }
 
-    private void setEndTime(Calendar endTime) throws Exception {
+    private void setEndTime(Calendar endTime) {
         this.endTime = endTime;
     }
 }

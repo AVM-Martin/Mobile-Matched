@@ -43,6 +43,10 @@ public class CustomCalendar extends BaseLinearLayout implements MVPView {
         return selectedDate;
     }
 
+    public void notifyDataSetChanged() {
+        calendarAdapter.notifyDataSetChanged();
+    }
+
     // mvp method
 
     @Override

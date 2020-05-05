@@ -5,14 +5,15 @@ import java.util.Random;
 
 import id.my.avmmartin.matched.data.network.firestore.SyncEventManager;
 import id.my.avmmartin.matched.data.network.firestore.model.SyncEvent;
+import id.my.avmmartin.matched.exception.NoTitleException;
 
 public class SyncEventFactory {
-    public static void generate() throws Exception {
+    public static void generate() {
         generateByUsername("avm_martin");
         generateByUsername("ekeitaro");
     }
 
-    private static void generateByUsername(String username) throws Exception {
+    private static void generateByUsername(String username) {
         SyncEventManager db = SyncEventManager.getInstance(username);
 
         Calendar startTime = Calendar.getInstance();
@@ -31,13 +32,17 @@ public class SyncEventFactory {
             endTime.set(2020, month, day, hour, minute, 0);
             endTime.add(Calendar.HOUR_OF_DAY, duration);
 
-            db.insertEvent(new SyncEvent(
-                "Title " + i,
-                "location",
-                startTime,
-                endTime,
-                username
-            ));
+            try {
+                db.insertEvent(new SyncEvent(
+                    "Title " + i,
+                    "location",
+                    startTime,
+                    endTime,
+                    username
+                ));
+            } catch (NoTitleException e) {
+                //
+            }
         }
     }
 
