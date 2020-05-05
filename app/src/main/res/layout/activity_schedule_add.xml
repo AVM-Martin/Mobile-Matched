@@ -8,6 +8,12 @@
     tools:context=".ui.schedule.add.AddActivity"
     android:layout_margin="20dp">
 
+    <id.my.avmmartin.matched.components.add_menu.AddMenu
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </id.my.avmmartin.matched.components.add_menu.AddMenu>
+
     <EditText
         android:id="@+id/etEventName"
         android:layout_width="match_parent"

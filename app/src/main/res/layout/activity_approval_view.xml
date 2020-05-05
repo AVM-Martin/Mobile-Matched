@@ -6,10 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.approve.view.ApprovalActivity">
 
+    <include
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/header"
+        android:layout_alignParentTop="true"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvListApproval"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"/>
 
     <id.my.avmmartin.matched.components.footer.CustomFooter
         android:layout_width="match_parent"

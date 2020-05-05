@@ -1,9 +1,11 @@
 package id.my.avmmartin.matched.ui.schedule.add;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -86,6 +88,9 @@ public class AddActivity extends BaseActivity<Presenter> implements MVPView {
 
         endTime = (Calendar) startTime.clone();
         endTime.add(Calendar.HOUR, 1);
+
+        ImageView ivAddSchedule = findViewById(R.id.ivAddSchedule);
+        ivAddSchedule.setImageResource(R.drawable.schedule_selected_24dp);
     }
 
     @Override
@@ -136,10 +141,12 @@ public class AddActivity extends BaseActivity<Presenter> implements MVPView {
                 addSchedule();
             }
         });
+
     }
 
     @Override
     protected void initPresenter() {
         presenter = new Presenter(this);
     }
+
 }
