@@ -49,7 +49,8 @@ public class Activity extends BaseActivity<Presenter> implements MVPView {
 
     @Override
     protected void onResume() {
-        loadData();
+        cvCalendar.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
         super.onResume();
     }
 
