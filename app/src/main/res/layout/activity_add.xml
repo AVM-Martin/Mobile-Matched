@@ -42,8 +42,7 @@
             android:textSize="15sp"
             android:gravity="right"
             android:layout_toLeftOf="@id/tvEventStartTime"
-            android:paddingRight="5dp"
-            android:onClick="setStartDate"/>
+            android:paddingRight="5dp" />
 
         <TextView
             android:id="@+id/tvEventStartTime"
@@ -51,8 +50,8 @@
             android:layout_height="wrap_content"
             android:textSize="15sp"
             android:gravity="right"
-            android:layout_alignParentRight="true"
-            android:onClick="setStartTime"/>
+            android:layout_alignParentRight="true" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -75,8 +74,7 @@
             android:textSize="15sp"
             android:gravity="right"
             android:layout_toLeftOf="@id/tvEventEndTime"
-            android:paddingRight="5dp"
-            android:onClick="setEndDate"/>
+            android:paddingRight="5dp" />
 
         <TextView
             android:id="@+id/tvEventEndTime"
@@ -84,8 +82,8 @@
             android:layout_height="wrap_content"
             android:textSize="15sp"
             android:gravity="right"
-            android:layout_alignParentRight="true"
-            android:onClick="setEndTime"/>
+            android:layout_alignParentRight="true" />
+
     </RelativeLayout>
 
     <RelativeLayout
