@@ -44,8 +44,7 @@ public class CommonUtils {
     }
 
     public static int toMinuteFormat(Calendar calendar) {
-        String temp = toTimeFormat(calendar);
-        return Integer.valueOf(temp.substring(0,2)) * 60 + Integer.valueOf(temp.substring(3,2));
+        return 60 * calendar.get(Calendar.HOUR_OF_DAY) + calendar.get(Calendar.MINUTE);
     }
 
     private CommonUtils() {
