@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.components.base.BaseLinearLayout;
 import id.my.avmmartin.matched.ui.account.AccountActivity;
-import id.my.avmmartin.matched.ui.approve.list.ApprovalActivity;
+import id.my.avmmartin.matched.ui.approve.view.ApprovalActivity;
 import id.my.avmmartin.matched.ui.schedule.free.FreeScheduleActivity;
 import id.my.avmmartin.matched.ui.schedule.view.Activity;
 

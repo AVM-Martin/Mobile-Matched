@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.account.AccountActivity" />
-        <activity android:name=".ui.approve.list.ApprovalActivity" />
+        <activity android:name=".ui.approve.view.ApprovalActivity" />
         <activity android:name=".ui.schedule.add.AddActivity" />
         <activity android:name=".ui.schedule.free.FreeScheduleActivity" />
         <activity android:name=".ui.schedule.view.Activity">

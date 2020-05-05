@@ -1,4 +1,4 @@
-package id.my.avmmartin.matched.ui.approve.list;
+package id.my.avmmartin.matched.ui.approve.view;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +16,7 @@ public class ApprovalActivity extends BaseActivity<Presenter> implements MVPView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_approval_list);
+        setContentView(R.layout.activity_approval_view);
         super.onCreate(savedInstanceState);
     }
 
