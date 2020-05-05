@@ -13,6 +13,12 @@
         layout="@layout/header"
         android:layout_alignParentTop="true"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListSchedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header" />
+
     <id.my.avmmartin.matched.components.footer.CustomFooter
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -3,10 +3,18 @@ package id.my.avmmartin.matched.ui.schedule.free;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
+import id.my.avmmartin.matched.ui.schedule.free.list.Adapter;
 
 public class FreeScheduleActivity extends BaseActivity<Presenter> implements MVPView {
+    private RecyclerView rvListSchedule;
+
+    private Adapter adapter;
+
     // overridden method
 
     @Override
@@ -17,7 +25,7 @@ public class FreeScheduleActivity extends BaseActivity<Presenter> implements MVP
 
     @Override
     protected void initComponents() {
-        // none
+        rvListSchedule = findViewById(R.id.rvListSchedule);
 
         ImageView ivFreeSchedule = findViewById(R.id.ivFreeSchedule);
         ivFreeSchedule.setImageResource(R.drawable.list_selected_24dp);
@@ -25,7 +33,9 @@ public class FreeScheduleActivity extends BaseActivity<Presenter> implements MVP
 
     @Override
     protected void loadData() {
-        // none
+        adapter = new Adapter(this, presenter.getFreeScheduleList());
+        rvListSchedule.setLayoutManager(new LinearLayoutManager(this));
+        rvListSchedule.setAdapter(adapter);
     }
 
     @Override
