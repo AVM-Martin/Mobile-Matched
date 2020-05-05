@@ -21,10 +21,10 @@ public abstract class BaseActivity<V extends BasePresenter> extends AppCompatAct
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        initPresenter();
         initComponents();
         loadData();
         setEvents();
-        initPresenter();
     }
 
     @Override
