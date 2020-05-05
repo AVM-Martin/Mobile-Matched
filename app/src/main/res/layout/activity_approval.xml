@@ -9,15 +9,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvListApproval"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="wrap_content" />
 
     <id.my.avmmartin.matched.components.footer.CustomFooter
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-    </id.my.avmmartin.matched.components.footer.CustomFooter>
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

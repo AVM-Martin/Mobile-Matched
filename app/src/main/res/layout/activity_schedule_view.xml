@@ -17,17 +17,13 @@
         android:id="@+id/cvCalendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar">
-
-    </id.my.avmmartin.matched.components.calendar.CustomCalendar>
+        android:layout_below="@id/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvListSchedule"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cvCalendar">
-    </androidx.recyclerview.widget.RecyclerView>
-
+        android:layout_below="@id/cvCalendar" />
 
     <ImageButton
         android:id="@+id/ibAddSchedule"
@@ -43,8 +39,6 @@
     <id.my.avmmartin.matched.components.footer.CustomFooter
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-    </id.my.avmmartin.matched.components.footer.CustomFooter>
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
