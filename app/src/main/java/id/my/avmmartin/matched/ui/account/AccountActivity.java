@@ -1,7 +1,5 @@
 package id.my.avmmartin.matched.ui.account;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -9,6 +7,7 @@ import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 
 public class AccountActivity extends BaseActivity<Presenter> implements MVPView {
+    // overridden method
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +17,7 @@ public class AccountActivity extends BaseActivity<Presenter> implements MVPView 
 
     @Override
     protected void initComponents() {
+        // none
 
         ImageView ivAccount = findViewById(R.id.ivAccount);
         ivAccount.setImageResource(R.drawable.account_selected_24dp);
@@ -25,16 +25,16 @@ public class AccountActivity extends BaseActivity<Presenter> implements MVPView 
 
     @Override
     protected void loadData() {
-
+        // none
     }
 
     @Override
     protected void setEvents() {
-
+        // none
     }
 
     @Override
     protected void initPresenter() {
-
+        presenter = new Presenter(this);
     }
 }

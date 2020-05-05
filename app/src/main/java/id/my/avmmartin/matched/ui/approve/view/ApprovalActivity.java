@@ -10,9 +10,8 @@ import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 
 public class ApprovalActivity extends BaseActivity<Presenter> implements MVPView {
-
-    RecyclerView rvListApproval;
-    ApprovalAdapter approvalAdapter;
+    private RecyclerView rvListApproval;
+    private ApprovalAdapter approvalAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +30,13 @@ public class ApprovalActivity extends BaseActivity<Presenter> implements MVPView
     @Override
     protected void loadData() {
         approvalAdapter = new ApprovalAdapter(ApprovalActivity.this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ApprovalActivity.this);
-        rvListApproval.setLayoutManager(linearLayoutManager);
+        rvListApproval.setLayoutManager(new LinearLayoutManager(this));
         rvListApproval.setAdapter(approvalAdapter);
     }
 
     @Override
     protected void setEvents() {
-
+        // none
     }
 
     @Override

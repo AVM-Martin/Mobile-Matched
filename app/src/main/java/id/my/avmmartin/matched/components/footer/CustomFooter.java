@@ -15,7 +15,12 @@ import id.my.avmmartin.matched.ui.schedule.free.FreeScheduleActivity;
 import id.my.avmmartin.matched.ui.schedule.view.Activity;
 
 public class CustomFooter extends BaseLinearLayout implements MVPView {
-    ImageView ivHome, ivApproval, ivFreeSchedule, ivAccount;
+    private ImageView ivHome;
+    private ImageView ivApproval;
+    private ImageView ivFreeSchedule;
+    private ImageView ivAccount;
+
+    // constructor
 
     public CustomFooter(Context context) {
         super(context);
@@ -24,6 +29,8 @@ public class CustomFooter extends BaseLinearLayout implements MVPView {
     public CustomFooter(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
+
+    // mvp method
 
     @Override
     public void goToHome() {
@@ -53,6 +60,8 @@ public class CustomFooter extends BaseLinearLayout implements MVPView {
         getContext().startActivity(intent);
     }
 
+    // overridden method
+
     @Override
     protected void initComponents() {
         Context context = getContext();
@@ -68,7 +77,7 @@ public class CustomFooter extends BaseLinearLayout implements MVPView {
 
     @Override
     protected void loadDatas() {
-
+        // none
     }
 
     @Override

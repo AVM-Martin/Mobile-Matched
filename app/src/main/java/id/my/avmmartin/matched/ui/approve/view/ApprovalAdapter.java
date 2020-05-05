@@ -11,17 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import id.my.avmmartin.matched.R;
-import id.my.avmmartin.matched.data.db.model.Schedule;
-import id.my.avmmartin.matched.data.network.firestore.model.User;
-import id.my.avmmartin.matched.utils.CommonUtils;
 
 public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ApprovalViewHolder> {
+    private Context context;
 
-    Context context;
+    // constructor
 
     public ApprovalAdapter(Context context) {
         this.context = context;
     }
+
+    // overridden method
 
     @NonNull
     @Override
