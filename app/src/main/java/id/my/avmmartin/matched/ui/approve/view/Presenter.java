@@ -15,6 +15,16 @@ public class Presenter extends BasePresenter<MVPView> implements MVPPresenter{
         onAttach((MVPView) context);
     }
 
+    @Override
+    public void onApproveRequest() {
+        // TODO: compare then send to menu 3
+    }
+
+    @Override
+    public void onRejectRequest() {
+        // TODO: delete approval
+    }
+
     public static List<Schedule> compareSchedule(List<Schedule> schedules1, List<Schedule> schedules2) {
         List<Schedule> listFreeSchedules = new ArrayList<>();
         boolean flag[] = new boolean[1445];

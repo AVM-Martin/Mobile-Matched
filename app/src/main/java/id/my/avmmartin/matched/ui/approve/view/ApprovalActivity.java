@@ -7,11 +7,29 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import id.my.avmmartin.matched.R;
+import id.my.avmmartin.matched.ui.approve.view.list.ApprovalAdapter;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 
 public class ApprovalActivity extends BaseActivity<Presenter> implements MVPView {
     private RecyclerView rvListApproval;
     private ApprovalAdapter approvalAdapter;
+
+    // mvp method
+
+    @Override
+    public void onApproveRequest() {
+        presenter.onApproveRequest();
+        approvalAdapter.notifyDataSetChanged();
+        // TODO: compare then send to menu 3
+    }
+
+    @Override
+    public void onRejectRequest() {
+        presenter.onRejectRequest();
+        approvalAdapter.notifyDataSetChanged();
+    }
+
+    // overridden method
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +54,17 @@ public class ApprovalActivity extends BaseActivity<Presenter> implements MVPView
 
     @Override
     protected void setEvents() {
-        // none
+        approvalAdapter.setListener(new ApprovalAdapter.Listener() {
+            @Override
+            public void onCancelScheduleApprovalClick() {
+                onRejectRequest();
+            }
+
+            @Override
+            public void onAddScheduleApprovalClick() {
+                onApproveRequest();
+            }
+        });
     }
 
     @Override
