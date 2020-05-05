@@ -43,6 +43,7 @@ public class ApprovalActivity extends BaseActivity<Presenter> implements MVPView
 
         ImageView ivApproval = findViewById(R.id.ivApproval);
         ivApproval.setImageResource(R.drawable.notifications_selected_24dp);
+        ivApproval.setClickable(false);
     }
 
     @Override

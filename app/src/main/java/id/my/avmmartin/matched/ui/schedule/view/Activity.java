@@ -63,6 +63,7 @@ public class Activity extends BaseActivity<Presenter> implements MVPView {
 
         ImageView ivHome = findViewById(R.id.ivHome);
         ivHome.setImageResource(R.drawable.home_selected_24dp);
+        ivHome.setClickable(false);
     }
 
     @Override

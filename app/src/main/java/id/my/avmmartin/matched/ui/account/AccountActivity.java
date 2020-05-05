@@ -49,6 +49,7 @@ public class AccountActivity extends BaseActivity<Presenter> implements MVPView 
 
         ImageView ivAccount = findViewById(R.id.ivAccount);
         ivAccount.setImageResource(R.drawable.account_selected_24dp);
+        ivAccount.setClickable(false);
     }
 
     @Override

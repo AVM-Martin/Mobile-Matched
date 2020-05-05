@@ -29,6 +29,7 @@ public class FreeScheduleActivity extends BaseActivity<Presenter> implements MVP
 
         ImageView ivFreeSchedule = findViewById(R.id.ivFreeSchedule);
         ivFreeSchedule.setImageResource(R.drawable.list_selected_24dp);
+        ivFreeSchedule.setClickable(false);
     }
 
     @Override
