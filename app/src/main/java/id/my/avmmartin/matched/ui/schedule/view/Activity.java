@@ -69,14 +69,9 @@ public class Activity extends BaseActivity<Presenter> implements MVPView {
 
     @Override
     protected void loadData() {
-        try {
-            adapter = new Adapter(this);
-            rvListSchedule.setLayoutManager(new LinearLayoutManager(this));
-            rvListSchedule.setAdapter(adapter);
-
-        } catch (Exception e) {
-            showMessage("ERROR OCCURRED");
-        }
+        adapter = new Adapter(this);
+        rvListSchedule.setLayoutManager(new LinearLayoutManager(this));
+        rvListSchedule.setAdapter(adapter);
     }
 
     @Override

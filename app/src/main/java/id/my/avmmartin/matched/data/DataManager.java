@@ -48,7 +48,7 @@ public final class DataManager {
         loadDataUtils.execute(
             new Callable<User>() {
                 @Override
-                public User call() throws Exception {
+                public User call() throws ExecutionException, InterruptedException {
                     return UserManager.getInstance(username).getUser();
                 }
             }
