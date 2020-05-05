@@ -8,4 +8,14 @@ public class Presenter extends BasePresenter<MVPView> implements MVPPresenter {
         super(context);
         onAttach((MVPView) context);
     }
+
+    @Override
+    public void updateAccount() {
+        // TODO: update profile
+    }
+
+    @Override
+    public void logout() {
+        // TODO: logout
+    }
 }

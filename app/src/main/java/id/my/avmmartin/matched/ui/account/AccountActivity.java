@@ -1,12 +1,36 @@
 package id.my.avmmartin.matched.ui.account;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 
 public class AccountActivity extends BaseActivity<Presenter> implements MVPView {
+    private EditText etUserName;
+    private EditText etFullName;
+    private EditText etPassword;
+    private Button btnUpdate;
+    private Button btnLogout;
+
+    // mvp method
+
+    @Override
+    public void updateAccount() {
+        presenter.updateAccount();
+        loadData();
+        showMessage("User account updated");
+    }
+
+    @Override
+    public void logout() {
+        presenter.logout();
+        // TODO: logout current user
+    }
+
     // overridden method
 
     @Override
@@ -17,7 +41,11 @@ public class AccountActivity extends BaseActivity<Presenter> implements MVPView 
 
     @Override
     protected void initComponents() {
-        // none
+        etUserName = findViewById(R.id.etUserName);
+        etFullName = findViewById(R.id.etFullName);
+        etPassword = findViewById(R.id.etPassword);
+        btnUpdate = findViewById(R.id.btnUpdate);
+        btnLogout = findViewById(R.id.btnLogout);
 
         ImageView ivAccount = findViewById(R.id.ivAccount);
         ivAccount.setImageResource(R.drawable.account_selected_24dp);
@@ -25,12 +53,26 @@ public class AccountActivity extends BaseActivity<Presenter> implements MVPView 
 
     @Override
     protected void loadData() {
-        // none
+        // TODO: get user data
+        etUserName.setText("avm_martin");
+        etFullName.setText("Andreas Martin");
+        etPassword.setText("");
     }
 
     @Override
     protected void setEvents() {
-        // none
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateAccount();
+            }
+        });
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
     }
 
     @Override

@@ -14,22 +14,41 @@
         android:layout_alignParentTop="true"/>
 
     <TextView
-        android:id="@+id/tvName"
+        android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="Username"
         android:textSize="25sp"
         android:layout_margin="10dp"
         android:layout_below="@id/header" />
 
     <EditText
-        android:id="@+id/etName"
+        android:id="@+id/etUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_below="@id/tvName"/>
+        android:layout_below="@id/tvUserName"
+        android:enabled="false" />
+
+    <TextView
+        android:id="@+id/tvFullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Full Name"
+        android:textSize="25sp"
+        android:layout_margin="10dp"
+        android:layout_below="@id/etUserName" />
+
+    <EditText
+        android:id="@+id/etFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/tvFullName"/>
 
     <TextView
         android:id="@+id/tvPassword"
@@ -38,15 +57,43 @@
         android:text="Password"
         android:textSize="25sp"
         android:layout_margin="10dp"
-        android:layout_below="@id/etName" />
+        android:layout_below="@id/etFullName" />
 
     <EditText
+        android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_below="@id/tvPassword"/>
+        android:layout_below="@id/tvPassword"
+        android:inputType="textPassword"/>
+
+    <LinearLayout
+        android:id="@+id/profile_container_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etPassword"
+        android:layout_marginTop="50sp"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20sp"
+            android:layout_gravity="center"
+            android:text="Update" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20sp"
+            android:layout_gravity="center"
+            android:text="Logout" />
+
+    </LinearLayout>
 
     <id.my.avmmartin.matched.components.footer.CustomFooter
         android:layout_width="match_parent"
