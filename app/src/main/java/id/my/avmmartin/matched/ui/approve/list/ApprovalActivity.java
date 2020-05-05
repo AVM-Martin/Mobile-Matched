@@ -1,13 +1,10 @@
 package id.my.avmmartin.matched.ui.approve.list;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
@@ -19,7 +16,7 @@ public class ApprovalActivity extends BaseActivity<Presenter> implements MVPView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_approval);
+        setContentView(R.layout.activity_approval_list);
         super.onCreate(savedInstanceState);
     }
 

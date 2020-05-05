@@ -11,7 +11,7 @@ public class FreeScheduleActivity extends BaseActivity<Presenter> implements MVP
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_free_schedule);
+        setContentView(R.layout.activity_schedule_free);
         super.onCreate(savedInstanceState);
     }
 

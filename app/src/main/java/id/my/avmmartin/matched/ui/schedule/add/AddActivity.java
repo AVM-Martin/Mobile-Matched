@@ -60,7 +60,7 @@ public class AddActivity extends BaseActivity<Presenter> implements MVPView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_add);
+        setContentView(R.layout.activity_schedule_add);
         super.onCreate(savedInstanceState);
     }
 
