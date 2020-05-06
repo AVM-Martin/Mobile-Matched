@@ -9,8 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.concurrent.Callable;
+
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.utils.CommonUtils;
+import id.my.avmmartin.matched.utils.LoadDataUtils;
 
 public abstract class BaseActivity<V extends BasePresenter> extends AppCompatActivity implements BaseMVPView {
     private ProgressDialog progressDialog;
@@ -18,13 +21,27 @@ public abstract class BaseActivity<V extends BasePresenter> extends AppCompatAct
 
     @CallSuper
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onStart() {
+        super.onStart();
 
         initPresenter();
         initComponents();
         loadData();
         setEvents();
+    }
+
+    @CallSuper
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        new LoadDataUtils(this).execute(new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                loadOnlineData();
+                return null;
+            }
+        });
     }
 
     @Override
@@ -33,10 +50,13 @@ public abstract class BaseActivity<V extends BasePresenter> extends AppCompatAct
         super.onDestroy();
     }
 
+    protected abstract void initPresenter();
     protected abstract void initComponents();
     protected abstract void loadData();
     protected abstract void setEvents();
-    protected abstract void initPresenter();
+    protected void loadOnlineData() {
+        // none
+    }
 
     @Override
     public void showLoading() {
