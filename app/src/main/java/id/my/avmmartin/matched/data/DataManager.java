@@ -60,12 +60,24 @@ public final class DataManager {
     // preferences
 
     // TODO: preferences
+    public void login(String username, String password) {
+        //
+    }
+
+    public String checkCredentialsReturnUsername() {
+        //
+        return "";
+    }
+
+    public void logout() {
+        //
+    }
 
     // constructor
 
     public DataManager(BaseActivity activity) {
         this.activity = activity;
         this.scheduleManager = new ScheduleManager(activity);
-        this.preferencesHelper = new PreferencesHelper();
+        this.preferencesHelper = new PreferencesHelper(activity);
     }
 }
