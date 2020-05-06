@@ -1,4 +1,4 @@
-package id.my.avmmartin.matched.data.network.firestore.factory;
+package id.my.avmmartin.matched.factory;
 
 import java.util.Calendar;
 import java.util.Random;

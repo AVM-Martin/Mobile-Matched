@@ -1,4 +1,4 @@
-package id.my.avmmartin.matched.data.db.factory;
+package id.my.avmmartin.matched.factory;
 
 import android.content.Context;
 

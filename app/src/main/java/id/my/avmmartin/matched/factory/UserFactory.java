@@ -1,4 +1,4 @@
-package id.my.avmmartin.matched.data.network.firestore.factory;
+package id.my.avmmartin.matched.factory;
 
 import id.my.avmmartin.matched.data.network.firestore.UserManager;
 import id.my.avmmartin.matched.data.network.firestore.model.User;

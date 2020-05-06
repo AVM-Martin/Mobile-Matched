@@ -2,7 +2,7 @@ package id.my.avmmartin.matched;
 
 import android.app.Application;
 
-import id.my.avmmartin.matched.data.db.factory.ScheduleFactory;
+import id.my.avmmartin.matched.factory.ScheduleFactory;
 
 public final class Matched extends Application {
     @Override
