@@ -54,9 +54,6 @@ public class AccountActivity extends BaseActivity<Presenter> implements MVPView 
 
     @Override
     protected void loadData() {
-        // TODO: get user data
-        etUserName.setText("avm_martin");
-        etFullName.setText("Andreas Martin");
         etPassword.setText("");
     }
 
@@ -79,5 +76,10 @@ public class AccountActivity extends BaseActivity<Presenter> implements MVPView 
     @Override
     protected void initPresenter() {
         presenter = new Presenter(this);
+    }
+
+    @Override
+    protected void loadOnlineData() {
+        presenter.loadUserData(etUserName, etFullName);
     }
 }
