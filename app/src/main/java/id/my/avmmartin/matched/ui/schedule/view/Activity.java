@@ -30,7 +30,7 @@ public class Activity extends BaseActivity<Presenter> implements MVPView {
     @Override
     public void addNewScheduleActivity() {
         Intent intent = new Intent(Activity.this, AddActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         intent.putExtra(Constants.INTENT_SELECTED_DATE, getSelectedDate().getTimeInMillis());
         startActivity(intent);
     }

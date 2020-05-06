@@ -42,21 +42,21 @@ public class CustomFooter extends BaseLinearLayout implements MVPView {
     @Override
     public void goToApproval() {
         Intent intent = new Intent(getContext(), ApprovalActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NO_ANIMATION);
         getContext().startActivity(intent);
     }
 
     @Override
     public void goToFreeSchedule() {
         Intent intent = new Intent(getContext(), FreeScheduleActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NO_ANIMATION);
         getContext().startActivity(intent);
     }
 
     @Override
     public void goToAccount() {
         Intent intent = new Intent(getContext(), AccountActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NO_ANIMATION);
         getContext().startActivity(intent);
     }
 

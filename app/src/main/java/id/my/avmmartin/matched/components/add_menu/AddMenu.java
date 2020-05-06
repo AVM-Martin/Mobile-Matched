@@ -10,10 +10,7 @@ import android.widget.ImageView;
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.components.base.BaseLinearLayout;
 import id.my.avmmartin.matched.ui.approve.add.AddApproval;
-import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.ui.schedule.add.AddActivity;
-import id.my.avmmartin.matched.ui.schedule.view.Activity;
-import id.my.avmmartin.matched.utils.Constants;
 
 public class AddMenu extends BaseLinearLayout implements MVPView {
     private ImageView ivAddSchedule;
@@ -34,17 +31,15 @@ public class AddMenu extends BaseLinearLayout implements MVPView {
     @Override
     public void goToAddSchedule() {
         Intent intent = new Intent(getContext(), AddActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NO_ANIMATION);
         getContext().startActivity(intent);
-        ((android.app.Activity)getContext()).finish();
     }
 
     @Override
     public void goToAddApproval() {
         Intent intent = new Intent(getContext(), AddApproval.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NO_ANIMATION);
         getContext().startActivity(intent);
-        ((android.app.Activity)getContext()).finish();
     }
 
     @Override
