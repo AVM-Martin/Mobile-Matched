@@ -12,6 +12,7 @@ import id.my.avmmartin.matched.data.network.firestore.model.User;
 import id.my.avmmartin.matched.data.network.firestore.model.UserToken;
 import id.my.avmmartin.matched.data.prefs.PreferencesHelper;
 import id.my.avmmartin.matched.exception.DataIntegrityException;
+import id.my.avmmartin.matched.exception.InvalidCredentialsException;
 import id.my.avmmartin.matched.exception.InvalidTokenException;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.utils.CommonUtils;
@@ -22,7 +23,7 @@ public final class DataManager {
     private final ScheduleManager scheduleManager;
     private final PreferencesHelper preferencesHelper;
 
-    // db.ScheduleManager
+    // Schedule
 
     public int sizeByDate(int year, int month, int day) {
         return scheduleManager.sizeByDate(year, month, day);
@@ -40,11 +41,11 @@ public final class DataManager {
         return scheduleManager.getScheduleByDate(year, month, day);
     }
 
-    // network.firestore.SyncEventManager
+    // SyncEvent
 
     // TODO: network.firestore.SyncEventManager
 
-    // network.firestore.UserManager
+    // User
 
     public User getUser(final String username) throws ExecutionException, InterruptedException {
         LoadDataUtils<User> loadDataUtils = new LoadDataUtils<>(activity);
@@ -61,26 +62,45 @@ public final class DataManager {
         return loadDataUtils.get();
     }
 
-    // network.firestore.UserTokenManager
+    // UserToken
 
-    public String setUsernameReturnUserToken(String username) throws ExecutionException, InterruptedException {
-        final UserToken userToken = new UserToken(username, CommonUtils.getDeviceId(activity));
+    public void login(String username, String password) throws ExecutionException, InterruptedException, InvalidCredentialsException {
+        User user = getUser(username);
 
-        LoadDataUtils<String> loadDataUtils = new LoadDataUtils<>(activity);
+        if (!user.isValidPassword(password)) {
+            throw new InvalidCredentialsException();
+        }
 
-        loadDataUtils.execute(
-            new Callable<String>() {
-                @Override
-                public String call() throws ExecutionException, InterruptedException {
-                    return UserTokenManager.getInstance().setUsernameReturnToken(userToken);
-                }
-            }
-        );
-
-        return loadDataUtils.get();
+        String token = setUsernameReturnUserToken(username);
+        preferencesHelper.setUsername(username);
+        preferencesHelper.setUserToken(token);
     }
 
-    public boolean validateUsername(final String token, String username) throws ExecutionException, InterruptedException {
+    public String getCurrentUsername() throws ExecutionException, InterruptedException, InvalidTokenException {
+        String username = preferencesHelper.getUsername();
+
+        if (!validateUsername(preferencesHelper.getUserToken(), username)) {
+            throw new InvalidTokenException();
+        }
+
+        return username;
+    }
+
+    public void logout() {
+        UserTokenManager.getInstance().removeToken(preferencesHelper.getUserToken());
+        preferencesHelper.setUsername(null);
+        preferencesHelper.setUserToken(null);
+    }
+
+    // helper
+
+    private String setUsernameReturnUserToken(String username) {
+        UserToken userToken = new UserToken(username, CommonUtils.getDeviceId(activity));
+
+        return UserTokenManager.getInstance().setUsernameReturnToken(userToken);
+    }
+
+    private boolean validateUsername(final String token, String username) throws ExecutionException, InterruptedException {
         final UserToken userToken = new UserToken(username, CommonUtils.getDeviceId(activity));
 
         LoadDataUtils<Boolean> loadDataUtils = new LoadDataUtils<>(activity);
@@ -95,26 +115,6 @@ public final class DataManager {
         );
 
         return loadDataUtils.get();
-    }
-
-    public void removeToken(String token) {
-        UserTokenManager.getInstance().removeToken(token);
-    }
-
-    // preferences
-
-    // TODO: preferences
-    public void login(String username, String password) {
-        //
-    }
-
-    public String checkCredentialsReturnUsername() {
-        //
-        return "";
-    }
-
-    public void logout() {
-        //
     }
 
     // constructor
