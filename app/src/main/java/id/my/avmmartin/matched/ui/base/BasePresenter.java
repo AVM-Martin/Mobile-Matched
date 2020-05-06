@@ -28,7 +28,11 @@ public abstract class BasePresenter<V extends BaseMVPView> implements BaseMVPPre
         return dataManager;
     }
 
-    public Context getContext() {
+    protected Context getContext() {
         return context;
+    }
+
+    protected V getMVPView() {
+        return mvpView;
     }
 }
