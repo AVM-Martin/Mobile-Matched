@@ -16,14 +16,14 @@
         android:id="@+id/etEventName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Event Name"
+        android:hint="@string/event_name"
         android:layout_margin="10dp"/>
 
     <EditText
         android:id="@+id/etEventLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Location"
+        android:hint="@string/event_location"
         android:layout_margin="10dp"/>
 
     <RelativeLayout
@@ -34,17 +34,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="From"
+            android:text="@string/event_start_date"
             android:textSize="20sp"
-            android:layout_alignParentLeft="true"/>
+            android:layout_alignParentStart="true"/>
 
         <TextView
             android:id="@+id/tvEventStartDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:gravity="right"
-            android:layout_toLeftOf="@id/tvEventStartTime"
+            android:gravity="end"
+            android:layout_toStartOf="@id/tvEventStartTime"
             android:paddingRight="5dp" />
 
         <TextView
@@ -52,8 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:gravity="right"
-            android:layout_alignParentRight="true" />
+            android:gravity="end"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 
@@ -65,7 +65,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="To"
+            android:text="@string/event_end_date"
             android:textSize="20sp"
             android:layout_alignParentStart="true" />
 
@@ -74,8 +74,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:gravity="right"
-            android:layout_toLeftOf="@id/tvEventEndTime"
+            android:gravity="end"
+            android:layout_toStartOf="@id/tvEventEndTime"
             android:paddingRight="5dp" />
 
         <TextView
@@ -83,8 +83,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:gravity="right"
-            android:layout_alignParentRight="true" />
+            android:gravity="end"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 
@@ -110,7 +110,5 @@
             android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
-
-
 
 </LinearLayout>

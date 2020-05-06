@@ -21,15 +21,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="From"
+            android:layout_alignParentStart="true"
+            android:text="@string/event_start_date"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tvEventStartDateApproval"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:gravity="end"
             android:layout_alignParentEnd="true"
             android:textSize="12sp"/>
 
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:text="To"
+            android:text="@string/event_end_date"
             android:textSize="15sp" />
 
         <TextView
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:gravity="right"
+            android:gravity="end"
             android:textSize="12sp" />
 
     </RelativeLayout>
@@ -68,7 +68,7 @@
             android:layout_height="25dp"
             android:background="@drawable/cancel_24dp"
             android:paddingRight="40dp"
-            android:layout_toLeftOf="@id/ibAddScheduleApproval"/>
+            android:layout_toStartOf="@id/ibAddScheduleApproval"/>
 
         <ImageButton
             android:id="@+id/ibAddScheduleApproval"

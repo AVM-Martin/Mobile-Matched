@@ -22,7 +22,7 @@ public class AccountActivity extends BaseActivity<Presenter> implements MVPView 
     public void updateAccount() {
         presenter.updateAccount();
         loadData();
-        showMessage("User account updated");
+        showMessage(getString(R.string.success_update));
     }
 
     @Override

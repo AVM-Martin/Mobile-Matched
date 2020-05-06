@@ -1,4 +1,29 @@
 <resources>
     <string name="app_name">Matched</string>
     <string name="some_error">Error</string>
+
+    <string name="username">Username</string>
+    <string name="fullname">Full Name</string>
+    <string name="password">Password</string>
+
+    <string name="date">Date</string>
+    <string name="event_name">Event Name</string>
+    <string name="event_location">Location</string>
+    <string name="event_start_date">From</string>
+    <string name="event_end_date">To</string>
+
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_fullname">Enter Full Name</string>
+    <string name="enter_password">Enter Password</string>
+
+    <string name="enter_event_name">Enter Event Name</string>
+    <string name="enter_event_location">Enter Location</string>
+
+    <string name="load_data">Loading items..</string>
+    <string name="success_update">Profile updated</string>
+
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="update">Update</string>
+    <string name="logout">Logout</string>
 </resources>
