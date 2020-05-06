@@ -19,10 +19,15 @@ public class UserTokenManager {
         return token;
     }
 
-    public boolean validateUsername(String token, UserToken userToken) throws ExecutionException, InterruptedException, InvalidTokenException {
+    public boolean isValidUsername(String token, UserToken userToken) throws ExecutionException, InterruptedException, InvalidTokenException {
         try {
             UserToken remote = Tasks.await(table.document(token).get()).toObject(UserToken.class);
-            return remote.equals(userToken);
+
+            // TODO: hard coded compare
+            return (
+                remote.getUsername().equals(userToken.getUsername())
+                    && remote.getDeviceId().equals(userToken.getDeviceId())
+            );
 
         } catch (NullPointerException e) {
             throw new InvalidTokenException();
