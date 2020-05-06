@@ -1,7 +1,6 @@
 package id.my.avmmartin.matched.data;
 
 import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 
 import id.my.avmmartin.matched.data.db.ScheduleManager;
@@ -16,7 +15,6 @@ import id.my.avmmartin.matched.exception.InvalidCredentialsException;
 import id.my.avmmartin.matched.exception.InvalidTokenException;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.utils.CommonUtils;
-import id.my.avmmartin.matched.utils.LoadDataUtils;
 
 public final class DataManager {
     private final BaseActivity activity;
@@ -48,18 +46,7 @@ public final class DataManager {
     // User
 
     public User getUser(final String username) throws ExecutionException, InterruptedException {
-        LoadDataUtils<User> loadDataUtils = new LoadDataUtils<>(activity);
-
-        loadDataUtils.execute(
-            new Callable<User>() {
-                @Override
-                public User call() throws ExecutionException, InterruptedException {
-                    return UserManager.getInstance(username).getUser();
-                }
-            }
-        );
-
-        return loadDataUtils.get();
+        return UserManager.getInstance(username).getUser();
     }
 
     // UserToken
@@ -79,7 +66,7 @@ public final class DataManager {
     public String getCurrentUsername() throws ExecutionException, InterruptedException, InvalidTokenException {
         String username = preferencesHelper.getUsername();
 
-        if (!validateUsername(preferencesHelper.getUserToken(), username)) {
+        if (!isValidUsername(preferencesHelper.getUserToken(), username)) {
             throw new InvalidTokenException();
         }
 
@@ -100,21 +87,13 @@ public final class DataManager {
         return UserTokenManager.getInstance().setUsernameReturnToken(userToken);
     }
 
-    private boolean validateUsername(final String token, String username) throws ExecutionException, InterruptedException {
+    private Boolean isValidUsername(
+            final String token,
+            String username
+    ) throws ExecutionException, InterruptedException, InvalidTokenException {
         final UserToken userToken = new UserToken(username, CommonUtils.getDeviceId(activity));
 
-        LoadDataUtils<Boolean> loadDataUtils = new LoadDataUtils<>(activity);
-
-        loadDataUtils.execute(
-            new Callable<Boolean>() {
-                @Override
-                public Boolean call() throws ExecutionException, InterruptedException, InvalidTokenException {
-                    return UserTokenManager.getInstance().validateUsername(token, userToken);
-                }
-            }
-        );
-
-        return loadDataUtils.get();
+        return UserTokenManager.getInstance().isValidUsername(token, userToken);
     }
 
     // constructor
