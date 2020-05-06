@@ -1,9 +1,5 @@
 package id.my.avmmartin.matched.ui.approve.add;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -18,26 +14,31 @@ import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.utils.CommonUtils;
 
 public class AddApproval extends BaseActivity<Presenter> implements MVPView{
-    EditText etUsername;
-    TextView tvApprovalDate;
-    ImageButton ibCancelApproval, ibAddApproval;
-    Calendar approvalDate;
+    private EditText etUsername;
+    private TextView tvApprovalDate;
+    private ImageButton ibCancelApproval;
+    private ImageButton ibAddApproval;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_approval_add);
-        super.onCreate(savedInstanceState);
-    }
+    private Calendar approvalDate;
+
+    // mvp method
 
     @Override
     public void addApproval() {
-        //TODO: add approval
-
+        // TODO: add approval
     }
 
     @Override
     public void cancelApproval() {
         finish();
+    }
+
+    // overridden method
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_approval_add);
+        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -47,11 +48,11 @@ public class AddApproval extends BaseActivity<Presenter> implements MVPView{
         ibAddApproval = findViewById(R.id.ibAddApproval);
         ibCancelApproval = findViewById(R.id.ibCancelApproval);
 
-        ImageView ivCompareSchedule = findViewById(R.id.ivCompareSchedule);
-        ivCompareSchedule.setImageResource(R.drawable.compare_selected_24dp);
-
         approvalDate = Calendar.getInstance();
 
+        ImageView ivCompareSchedule = findViewById(R.id.ivCompareSchedule);
+        ivCompareSchedule.setImageResource(R.drawable.compare_selected_24dp);
+        ivCompareSchedule.setClickable(false);
     }
 
     @Override
@@ -74,7 +75,6 @@ public class AddApproval extends BaseActivity<Presenter> implements MVPView{
                 cancelApproval();
             }
         });
-
         ibAddApproval.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

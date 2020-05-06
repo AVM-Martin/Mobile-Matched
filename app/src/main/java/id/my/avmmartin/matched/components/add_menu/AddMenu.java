@@ -16,8 +16,10 @@ import id.my.avmmartin.matched.ui.schedule.view.Activity;
 import id.my.avmmartin.matched.utils.Constants;
 
 public class AddMenu extends BaseLinearLayout implements MVPView {
+    private ImageView ivAddSchedule;
+    private ImageView ivCompareSchedule;
 
-    ImageView ivAddSchedule, ivCompareSchedule;
+    // constructor
 
     public AddMenu(Context context) {
         super(context);
@@ -26,6 +28,8 @@ public class AddMenu extends BaseLinearLayout implements MVPView {
     public AddMenu(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
+
+    // mvp method
 
     @Override
     public void goToAddSchedule() {
@@ -55,7 +59,7 @@ public class AddMenu extends BaseLinearLayout implements MVPView {
 
     @Override
     protected void loadDatas() {
-
+        // none
     }
 
     @Override
@@ -66,7 +70,6 @@ public class AddMenu extends BaseLinearLayout implements MVPView {
                 goToAddSchedule();
             }
         });
-
         ivCompareSchedule.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +77,4 @@ public class AddMenu extends BaseLinearLayout implements MVPView {
             }
         });
     }
-
-
 }

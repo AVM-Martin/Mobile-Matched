@@ -10,9 +10,7 @@
 
     <id.my.avmmartin.matched.components.add_menu.AddMenu
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </id.my.avmmartin.matched.components.add_menu.AddMenu>
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/etEventName"
