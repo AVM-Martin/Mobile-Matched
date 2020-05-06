@@ -1,4 +1,4 @@
-package id.my.avmmartin.matched.ui.account;
+package id.my.avmmartin.matched.ui.account.view;
 
 import android.os.Bundle;
 import android.view.View;
@@ -35,7 +35,7 @@ public class AccountActivity extends BaseActivity<Presenter> implements MVPView 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_account);
+        setContentView(R.layout.activity_account_view);
         super.onCreate(savedInstanceState);
     }
 

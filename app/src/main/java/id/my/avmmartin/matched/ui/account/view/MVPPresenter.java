@@ -1,4 +1,4 @@
-package id.my.avmmartin.matched.ui.account;
+package id.my.avmmartin.matched.ui.account.view;
 
 import id.my.avmmartin.matched.ui.base.BaseMVPPresenter;
 
