@@ -6,7 +6,7 @@ import java.util.concurrent.Callable;
 
 import id.my.avmmartin.matched.ui.base.BaseMVPView;
 
-public class LoadDataUtils<T extends Object> extends AsyncTask<Callable<T>, Integer, T> {
+public class LoadDataUtils extends AsyncTask<Callable<Void>, Integer, Void> {
     private BaseMVPView baseMVPView;
 
     // overridden method
@@ -18,7 +18,7 @@ public class LoadDataUtils<T extends Object> extends AsyncTask<Callable<T>, Inte
     }
 
     @Override
-    protected T doInBackground(Callable<T>... callables) {
+    protected Void doInBackground(Callable<Void>... callables) {
         try {
             return callables[0].call();
         } catch (Exception e) {
@@ -29,7 +29,7 @@ public class LoadDataUtils<T extends Object> extends AsyncTask<Callable<T>, Inte
     }
 
     @Override
-    protected void onPostExecute(T t) {
+    protected void onPostExecute(Void t) {
         super.onPostExecute(t);
         baseMVPView.hideLoading();
     }
