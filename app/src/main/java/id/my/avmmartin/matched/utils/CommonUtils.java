@@ -14,12 +14,13 @@ import id.my.avmmartin.matched.R;
 public class CommonUtils {
     public static ProgressDialog showLoadingDialog(Context context) {
         ProgressDialog progressDialog = new ProgressDialog(context);
-        progressDialog.show();
 
         progressDialog.setTitle(context.getString(R.string.load_data));
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);
         progressDialog.setCanceledOnTouchOutside(false);
+
+        progressDialog.show();
 
         return progressDialog;
     }
