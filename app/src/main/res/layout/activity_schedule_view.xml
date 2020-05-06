@@ -23,7 +23,9 @@
         android:id="@+id/rvListSchedule"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cvCalendar" />
+        android:layout_below="@id/cvCalendar"
+        android:layout_above="@id/footer"
+        android:paddingBottom="15dp"/>
 
     <id.my.avmmartin.matched.components.footer.CustomFooter
         android:id="@+id/footer"

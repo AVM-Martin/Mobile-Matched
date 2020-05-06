@@ -9,6 +9,7 @@
     android:layout_margin="20dp">
 
     <id.my.avmmartin.matched.components.add_menu.AddMenu
+        android:id="@+id/addMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
