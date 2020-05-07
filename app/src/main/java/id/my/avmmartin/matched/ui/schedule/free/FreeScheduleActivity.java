@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.ui.schedule.free.list.Adapter;
+import id.my.avmmartin.matched.utils.Constants;
 
 public class FreeScheduleActivity extends BaseActivity<Presenter> implements MVPView {
     private RecyclerView rvListSchedule;
 
     private Adapter adapter;
+    private String approvalId;
 
     // overridden method
 
@@ -25,18 +27,25 @@ public class FreeScheduleActivity extends BaseActivity<Presenter> implements MVP
     @Override
     protected void initComponents() {
         rvListSchedule = findViewById(R.id.rvListSchedule);
+        approvalId = getIntent().getStringExtra(Constants.INTENT_SELECTED_APPROVAL_ID);
     }
 
     @Override
     protected void loadData() {
-        // none
+        adapter = new Adapter(this);
+        rvListSchedule.setLayoutManager(new LinearLayoutManager(this));
+        rvListSchedule.setAdapter(adapter);
     }
 
     @Override
     protected void loadOnlineData() {
-        adapter = new Adapter(this, presenter.getFreeScheduleList());
-        rvListSchedule.setLayoutManager(new LinearLayoutManager(this));
-        rvListSchedule.setAdapter(adapter);
+        adapter.setSchedules(presenter.getFreeScheduleList(approvalId));
+    }
+
+    @Override
+    protected void postLoadOnlineData() {
+        super.postLoadOnlineData();
+        adapter.notifyDataSetChanged();
     }
 
     @Override

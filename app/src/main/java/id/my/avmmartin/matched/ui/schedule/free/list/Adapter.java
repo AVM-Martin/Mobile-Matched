@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 
 import java.util.List;
+import java.util.Vector;
 
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.data.db.model.Schedule;
@@ -14,6 +15,10 @@ import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.ui.base.BaseRecyclerViewAdapter;
 
 public class Adapter extends BaseRecyclerViewAdapter<ViewHolder> {
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedules = schedules;
+    }
+
     // overridden method
 
     @NonNull
@@ -40,8 +45,8 @@ public class Adapter extends BaseRecyclerViewAdapter<ViewHolder> {
     private BaseActivity activity;
     private List<Schedule> schedules;
 
-    public Adapter(BaseActivity activity, List<Schedule> schedules) {
+    public Adapter(BaseActivity activity) {
         this.activity = activity;
-        this.schedules = schedules;
+        this.schedules = new Vector<>();
     }
 }

@@ -6,5 +6,5 @@ import id.my.avmmartin.matched.data.db.model.Schedule;
 import id.my.avmmartin.matched.ui.base.BaseMVPPresenter;
 
 public interface MVPPresenter extends BaseMVPPresenter<MVPView> {
-    List<Schedule> getFreeScheduleList();
+    List<Schedule> getFreeScheduleList(String id);
 }
