@@ -1,4 +1,4 @@
-package id.my.avmmartin.matched.ui.approve.view;
+package id.my.avmmartin.matched.ui.approve.pending;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,10 +7,10 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import id.my.avmmartin.matched.R;
-import id.my.avmmartin.matched.ui.approve.view.list.ApprovalAdapter;
+import id.my.avmmartin.matched.ui.approve.pending.list.ApprovalAdapter;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 
-public class ApprovalActivity extends BaseActivity<Presenter> implements MVPView {
+public class PendingApprovalActivity extends BaseActivity<Presenter> implements MVPView {
     private RecyclerView rvListApproval;
     private ApprovalAdapter approvalAdapter;
 
@@ -33,7 +33,7 @@ public class ApprovalActivity extends BaseActivity<Presenter> implements MVPView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_approval_view);
+        setContentView(R.layout.activity_approval_pending);
         super.onCreate(savedInstanceState);
     }
 
@@ -48,7 +48,7 @@ public class ApprovalActivity extends BaseActivity<Presenter> implements MVPView
 
     @Override
     protected void loadData() {
-        approvalAdapter = new ApprovalAdapter(ApprovalActivity.this);
+        approvalAdapter = new ApprovalAdapter(PendingApprovalActivity.this);
         rvListApproval.setLayoutManager(new LinearLayoutManager(this));
         rvListApproval.setAdapter(approvalAdapter);
     }

@@ -1,4 +1,4 @@
-package id.my.avmmartin.matched.ui.approve.view.list;
+package id.my.avmmartin.matched.ui.approve.pending.list;
 
 import android.view.View;
 import android.widget.ImageButton;

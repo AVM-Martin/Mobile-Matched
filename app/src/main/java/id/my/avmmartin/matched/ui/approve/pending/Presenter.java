@@ -1,4 +1,4 @@
-package id.my.avmmartin.matched.ui.approve.view;
+package id.my.avmmartin.matched.ui.approve.pending;
 
 import java.util.ArrayList;
 import java.util.Calendar;
