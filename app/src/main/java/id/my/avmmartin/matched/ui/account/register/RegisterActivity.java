@@ -36,7 +36,7 @@ public class RegisterActivity extends BaseActivity<Presenter> implements MVPView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_account_view);
+        setContentView(R.layout.activity_account_register);
         super.onCreate(savedInstanceState);
     }
 
