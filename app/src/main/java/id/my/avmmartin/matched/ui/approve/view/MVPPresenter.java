@@ -6,6 +6,5 @@ import id.my.avmmartin.matched.data.db.model.Schedule;
 import id.my.avmmartin.matched.ui.base.BaseMVPPresenter;
 
 public interface MVPPresenter extends BaseMVPPresenter<MVPView> {
-    // TODO: wrong presenter
-    List<Schedule> getFreeScheduleList();
+    List<Schedule> getApprovedSchedule();
 }

@@ -11,7 +11,7 @@ import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.ui.approve.view.list.Adapter;
 
 public class ApprovedActivity extends BaseActivity<Presenter> implements MVPView {
-    private RecyclerView rvListSchedule;
+    private RecyclerView rvListApproval;
 
     private Adapter adapter;
 
@@ -25,7 +25,7 @@ public class ApprovedActivity extends BaseActivity<Presenter> implements MVPView
 
     @Override
     protected void initComponents() {
-        rvListSchedule = findViewById(R.id.rvListSchedule);
+        rvListApproval = findViewById(R.id.rvListApproval);
 
         ImageView ivFreeSchedule = findViewById(R.id.ivFreeSchedule);
         ivFreeSchedule.setImageResource(R.drawable.list_selected_24dp);
@@ -34,10 +34,14 @@ public class ApprovedActivity extends BaseActivity<Presenter> implements MVPView
 
     @Override
     protected void loadData() {
-        // TODO
-        adapter = new Adapter(this, presenter.getFreeScheduleList());
-        rvListSchedule.setLayoutManager(new LinearLayoutManager(this));
-        rvListSchedule.setAdapter(adapter);
+        // none
+    }
+
+    @Override
+    protected void loadOnlineData() {
+        adapter = new Adapter(this, presenter.getApprovedSchedule());
+        rvListApproval.setLayoutManager(new LinearLayoutManager(this));
+        rvListApproval.setAdapter(adapter);
     }
 
     @Override

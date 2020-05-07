@@ -14,8 +14,8 @@ public class Presenter extends BasePresenter<MVPView> implements MVPPresenter {
     }
 
     @Override
-    public List<Schedule> getFreeScheduleList() {
-        List<Schedule> schedules = new Vector<Schedule>();
+    public List<Schedule> getApprovedSchedule() {
+        List<Schedule> schedules = new Vector<>();
 
         // TODO: list
 
