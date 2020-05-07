@@ -12,6 +12,7 @@ public class Constants {
     public static final String MONTH_FORMAT = "yyyy MMMM";
 
     public static final String INTENT_SELECTED_DATE = PACKAGE_NAME + ".SELECTED_DATE";
+    public static final String INTENT_SELECTED_SCHEDULE_ID = PACKAGE_NAME + ".SELECTED_SCHEDULE_ID";
 
     public static final String SHARED_PREFS_FILE_NAME = "MatchedSharedPrefs";
     public static final String SHARED_PREFS_USER_TOKEN = PACKAGE_NAME + ".USER_TOKEN";
