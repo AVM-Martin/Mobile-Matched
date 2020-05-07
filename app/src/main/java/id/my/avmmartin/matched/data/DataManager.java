@@ -1,12 +1,14 @@
 package id.my.avmmartin.matched.data;
 
 import java.util.List;
+import java.util.Vector;
 import java.util.concurrent.ExecutionException;
 
 import id.my.avmmartin.matched.data.db.ScheduleManager;
 import id.my.avmmartin.matched.data.db.model.Schedule;
 import id.my.avmmartin.matched.data.network.firestore.UserManager;
 import id.my.avmmartin.matched.data.network.firestore.UserTokenManager;
+import id.my.avmmartin.matched.data.network.firestore.model.PermissionApproval;
 import id.my.avmmartin.matched.data.network.firestore.model.User;
 import id.my.avmmartin.matched.data.network.firestore.model.UserToken;
 import id.my.avmmartin.matched.data.prefs.PreferencesHelper;
@@ -14,6 +16,7 @@ import id.my.avmmartin.matched.exception.DataIntegrityException;
 import id.my.avmmartin.matched.exception.InvalidCredentialsException;
 import id.my.avmmartin.matched.exception.InvalidDurationException;
 import id.my.avmmartin.matched.exception.InvalidTokenException;
+import id.my.avmmartin.matched.factory.PermissionApprovalFactory;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.utils.CommonUtils;
 
@@ -21,6 +24,26 @@ public final class DataManager {
     private final BaseActivity activity;
     private final ScheduleManager scheduleManager;
     private final PreferencesHelper preferencesHelper;
+
+    // PermissionApproval
+
+    public List<PermissionApproval> getPendingApproval(String username) {
+        if (username == null) {
+            return new Vector<>();
+        }
+
+        // TODO: get online data
+        return PermissionApprovalFactory.getPendingApproval();
+    }
+
+    public List<PermissionApproval> getApprovedApproval(String username) {
+        if (username == null) {
+            return new Vector<>();
+        }
+
+        // TODO: get online data
+        return PermissionApprovalFactory.getApprovedApproval();
+    }
 
     // Schedule
 
