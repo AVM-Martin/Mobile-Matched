@@ -8,17 +8,19 @@ import androidx.annotation.NonNull;
 
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.components.base.BaseListener;
+import id.my.avmmartin.matched.data.network.firestore.model.PermissionApproval;
 import id.my.avmmartin.matched.ui.base.BaseViewHolder;
+import id.my.avmmartin.matched.utils.CommonUtils;
 
-public class ApprovalViewHolder extends BaseViewHolder<Object> {
+public class ApprovalViewHolder extends BaseViewHolder<PermissionApproval> {
     public interface Listener extends BaseListener {
-        void onCancelScheduleApprovalClick();
-        void onAddScheduleApprovalClick();
+        void onCancelScheduleApprovalClick(String id);
+        void onAddScheduleApprovalClick(String id);
     }
 
-    private TextView tvUser;
-    private TextView tvEventStartDateApproval;
-    private TextView tvEventEndDateApproval;
+    private TextView tvApplicantUser;
+    private TextView tvRespondentUser;
+    private TextView tvEventDateApproval;
     private ImageButton ibCancelScheduleApproval;
     private ImageButton ibAddScheduleApproval;
 
@@ -32,19 +34,18 @@ public class ApprovalViewHolder extends BaseViewHolder<Object> {
 
     @Override
     protected void initComponents() {
-        tvUser = itemView.findViewById(R.id.tvUser);
-        tvEventStartDateApproval = itemView.findViewById(R.id.tvEventStartDateApproval);
-        tvEventEndDateApproval = itemView.findViewById(R.id.tvEventEndDateApproval);
+        tvApplicantUser = itemView.findViewById(R.id.tvApplicantUser);
+        tvRespondentUser = itemView.findViewById(R.id.tvRespondentUser);
+        tvEventDateApproval = itemView.findViewById(R.id.tvEventDateApproval);
         ibCancelScheduleApproval = itemView.findViewById(R.id.ibCancelScheduleApproval);
         ibAddScheduleApproval = itemView.findViewById(R.id.ibAddScheduleApproval);
     }
 
     @Override
     protected void loadData() {
-        // TODO: load data
-        tvUser.setText("");
-        tvEventStartDateApproval.setText("");
-        tvEventEndDateApproval.setText("");
+        tvApplicantUser.setText(getData().getApplicantUsersFK());
+        tvRespondentUser.setText(getData().getRespondentUsersFK());
+        tvEventDateApproval.setText(CommonUtils.toDateFormat(getData().getDate()));
     }
 
     @Override
@@ -52,13 +53,13 @@ public class ApprovalViewHolder extends BaseViewHolder<Object> {
         ibCancelScheduleApproval.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onCancelScheduleApprovalClick();
+                listener.onCancelScheduleApprovalClick(getData().getId());
             }
         });
         ibAddScheduleApproval.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onAddScheduleApprovalClick();
+                listener.onAddScheduleApprovalClick(getData().getId());
             }
         });
     }

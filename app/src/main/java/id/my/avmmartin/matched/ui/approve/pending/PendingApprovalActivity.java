@@ -17,15 +17,14 @@ public class PendingApprovalActivity extends BaseActivity<Presenter> implements 
     // mvp method
 
     @Override
-    public void onApproveRequest() {
-        presenter.onApproveRequest();
+    public void onApproveRequest(String id) {
+        presenter.onApproveRequest(id);
         approvalAdapter.notifyDataSetChanged();
-        // TODO: compare then send to menu 3
     }
 
     @Override
-    public void onRejectRequest() {
-        presenter.onRejectRequest();
+    public void onRejectRequest(String id) {
+        presenter.onRejectRequest(id);
         approvalAdapter.notifyDataSetChanged();
     }
 
@@ -54,16 +53,27 @@ public class PendingApprovalActivity extends BaseActivity<Presenter> implements 
     }
 
     @Override
+    protected void loadOnlineData() {
+        approvalAdapter.loadUsername();
+    }
+
+    @Override
+    protected void postLoadOnlineData() {
+        super.postLoadOnlineData();
+        approvalAdapter.notifyDataSetChanged();
+    }
+
+    @Override
     protected void setEvents() {
         approvalAdapter.setListener(new ApprovalAdapter.Listener() {
             @Override
-            public void onCancelScheduleApprovalClick() {
-                onRejectRequest();
+            public void onCancelScheduleApprovalClick(String id) {
+                onRejectRequest(id);
             }
 
             @Override
-            public void onAddScheduleApprovalClick() {
-                onApproveRequest();
+            public void onAddScheduleApprovalClick(String id) {
+                onApproveRequest(id);
             }
         });
     }

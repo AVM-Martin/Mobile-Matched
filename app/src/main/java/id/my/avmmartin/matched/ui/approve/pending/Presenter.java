@@ -16,13 +16,15 @@ public class Presenter extends BasePresenter<MVPView> implements MVPPresenter{
     }
 
     @Override
-    public void onApproveRequest() {
+    public void onApproveRequest(String id) {
         // TODO: compare then send to menu 3
+        getMVPView().showMessage("TODO: approve me");
     }
 
     @Override
-    public void onRejectRequest() {
+    public void onRejectRequest(String id) {
         // TODO: delete approval
+        getMVPView().showMessage("TODO: reject me");
     }
 
     public static List<Schedule> compareSchedule(List<Schedule> schedules1, List<Schedule> schedules2) {
