@@ -55,13 +55,17 @@ public class Schedule {
         }
     }
 
-    public ContentValues toContentValues() {
+    public ContentValues toContentValues() throws InvalidDurationException {
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(NAME, getName());
         contentValues.put(LOCATION, getLocation());
         contentValues.put(START_TIME, getStartTime().getTimeInMillis());
         contentValues.put(END_TIME, getEndTime().getTimeInMillis());
+
+        if (startTime.after(endTime)) {
+            throw new InvalidDurationException();
+        }
 
         return contentValues;
     }
@@ -113,7 +117,7 @@ public class Schedule {
         this.id = id;
     }
 
-    private void setName(String name) throws NoTitleException {
+    public void setName(String name) throws NoTitleException {
         if (name.equals("")) {
             throw new NoTitleException();
         } else {
@@ -121,7 +125,7 @@ public class Schedule {
         }
     }
 
-    private void setLocation(String location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 

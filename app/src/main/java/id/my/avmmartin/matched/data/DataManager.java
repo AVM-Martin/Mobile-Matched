@@ -12,6 +12,7 @@ import id.my.avmmartin.matched.data.network.firestore.model.UserToken;
 import id.my.avmmartin.matched.data.prefs.PreferencesHelper;
 import id.my.avmmartin.matched.exception.DataIntegrityException;
 import id.my.avmmartin.matched.exception.InvalidCredentialsException;
+import id.my.avmmartin.matched.exception.InvalidDurationException;
 import id.my.avmmartin.matched.exception.InvalidTokenException;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.utils.CommonUtils;
@@ -27,7 +28,7 @@ public final class DataManager {
         return scheduleManager.sizeByDate(year, month, day);
     }
 
-    public void insertSchedule(Schedule schedule) {
+    public void insertSchedule(Schedule schedule) throws InvalidDurationException {
         scheduleManager.insertSchedule(schedule);
     }
 
@@ -37,6 +38,10 @@ public final class DataManager {
 
     public List<Schedule> getScheduleByDate(int year, int month, int day) throws DataIntegrityException {
         return scheduleManager.getScheduleByDate(year, month, day);
+    }
+
+    public void updateSchedule(Schedule schedule) throws InvalidDurationException {
+        scheduleManager.updateSchedule(schedule);
     }
 
     // SyncEvent

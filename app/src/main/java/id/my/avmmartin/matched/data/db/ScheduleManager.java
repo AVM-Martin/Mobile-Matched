@@ -12,6 +12,7 @@ import java.util.List;
 
 import id.my.avmmartin.matched.data.db.model.Schedule;
 import id.my.avmmartin.matched.exception.DataIntegrityException;
+import id.my.avmmartin.matched.exception.InvalidDurationException;
 import id.my.avmmartin.matched.utils.Constants;
 
 public class ScheduleManager extends SQLiteOpenHelper {
@@ -54,7 +55,7 @@ public class ScheduleManager extends SQLiteOpenHelper {
 
     // create read update delete
 
-    public void insertSchedule(Schedule schedule) {
+    public void insertSchedule(Schedule schedule) throws InvalidDurationException {
         try (SQLiteDatabase db = getWritableDatabase()) {
             db.insert(TABLE_NAME, null, schedule.toContentValues());
         }
@@ -136,7 +137,7 @@ public class ScheduleManager extends SQLiteOpenHelper {
         }
     }
 
-    public void updateSchedule(Schedule schedule) {
+    public void updateSchedule(Schedule schedule) throws InvalidDurationException {
         String where_clause = (
             ID + " = ?"
         );
