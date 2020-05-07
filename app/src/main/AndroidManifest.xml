@@ -10,6 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.account.login.LoginActivity" />
+        <activity android:name=".ui.account.register.RegisterActivity" />
         <activity android:name=".ui.account.view.AccountActivity" />
         <activity android:name=".ui.approve.add.AddApproval" />
         <activity android:name=".ui.approve.pending.PendingApprovalActivity" />

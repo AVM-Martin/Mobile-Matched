@@ -1,13 +1,16 @@
 package id.my.avmmartin.matched.ui.account.register;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import id.my.avmmartin.matched.R;
+import id.my.avmmartin.matched.ui.account.login.LoginActivity;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 
-public class Activity extends BaseActivity<Presenter> implements MVPView {
+public class RegisterActivity extends BaseActivity<Presenter> implements MVPView {
     private EditText etUserName;
     private EditText etFullName;
     private EditText etPassword;
@@ -15,6 +18,19 @@ public class Activity extends BaseActivity<Presenter> implements MVPView {
     private Button btnRegister;
 
     // mvp method
+
+    @Override
+    public void btnLoginOnClick() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    @Override
+    public void btnRegisterOnClick() {
+        presenter.register();
+        btnLoginOnClick();
+    }
 
     // overridden method
 
@@ -40,7 +56,18 @@ public class Activity extends BaseActivity<Presenter> implements MVPView {
 
     @Override
     protected void setEvents() {
-        // none
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnLoginOnClick();
+            }
+        });
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnRegisterOnClick();
+            }
+        });
     }
 
     @Override
