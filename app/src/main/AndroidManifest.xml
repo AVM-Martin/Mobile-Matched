@@ -13,9 +13,9 @@
         <activity android:name=".ui.account.view.AccountActivity" />
         <activity android:name=".ui.approve.add.AddApproval" />
         <activity android:name=".ui.approve.pending.PendingApprovalActivity" />
+        <activity android:name=".ui.approve.view.ApprovedActivity" />
         <activity android:name=".ui.schedule.add.AddActivity" />
         <activity android:name=".ui.schedule.edit.EditScheduleActivity" />
-        <activity android:name=".ui.schedule.free.FreeScheduleActivity" />
         <activity android:name=".ui.schedule.view.Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

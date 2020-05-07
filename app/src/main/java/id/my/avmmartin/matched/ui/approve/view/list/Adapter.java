@@ -1,4 +1,4 @@
-package id.my.avmmartin.matched.ui.schedule.free.list;
+package id.my.avmmartin.matched.ui.approve.view.list;
 
 import android.view.LayoutInflater;
 import android.view.View;

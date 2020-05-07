@@ -1,4 +1,4 @@
-package id.my.avmmartin.matched.ui.schedule.free;
+package id.my.avmmartin.matched.ui.approve.view;
 
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
-import id.my.avmmartin.matched.ui.schedule.free.list.Adapter;
+import id.my.avmmartin.matched.ui.approve.view.list.Adapter;
 
-public class FreeScheduleActivity extends BaseActivity<Presenter> implements MVPView {
+public class ApprovedActivity extends BaseActivity<Presenter> implements MVPView {
     private RecyclerView rvListSchedule;
 
     private Adapter adapter;
@@ -19,7 +19,7 @@ public class FreeScheduleActivity extends BaseActivity<Presenter> implements MVP
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_schedule_free);
+        setContentView(R.layout.activity_approval_view);
         super.onCreate(savedInstanceState);
     }
 
@@ -34,6 +34,7 @@ public class FreeScheduleActivity extends BaseActivity<Presenter> implements MVP
 
     @Override
     protected void loadData() {
+        // TODO
         adapter = new Adapter(this, presenter.getFreeScheduleList());
         rvListSchedule.setLayoutManager(new LinearLayoutManager(this));
         rvListSchedule.setAdapter(adapter);

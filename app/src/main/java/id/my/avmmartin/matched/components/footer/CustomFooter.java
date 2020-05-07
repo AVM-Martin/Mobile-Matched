@@ -11,7 +11,7 @@ import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.components.base.BaseLinearLayout;
 import id.my.avmmartin.matched.ui.account.view.AccountActivity;
 import id.my.avmmartin.matched.ui.approve.pending.PendingApprovalActivity;
-import id.my.avmmartin.matched.ui.schedule.free.FreeScheduleActivity;
+import id.my.avmmartin.matched.ui.approve.view.ApprovedActivity;
 import id.my.avmmartin.matched.ui.schedule.view.Activity;
 
 public class CustomFooter extends BaseLinearLayout implements MVPView {
@@ -48,7 +48,7 @@ public class CustomFooter extends BaseLinearLayout implements MVPView {
 
     @Override
     public void goToFreeSchedule() {
-        Intent intent = new Intent(getContext(), FreeScheduleActivity.class);
+        Intent intent = new Intent(getContext(), ApprovedActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NO_ANIMATION);
         getContext().startActivity(intent);
     }

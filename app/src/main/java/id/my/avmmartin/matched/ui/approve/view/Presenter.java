@@ -1,4 +1,4 @@
-package id.my.avmmartin.matched.ui.schedule.free;
+package id.my.avmmartin.matched.ui.approve.view;
 
 import java.util.List;
 import java.util.Vector;
