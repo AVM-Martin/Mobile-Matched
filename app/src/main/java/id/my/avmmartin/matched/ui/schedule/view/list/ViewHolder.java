@@ -9,6 +9,7 @@ import id.my.avmmartin.matched.data.db.model.Schedule;
 import id.my.avmmartin.matched.ui.base.BaseViewHolder;
 import id.my.avmmartin.matched.ui.schedule.edit.EditScheduleActivity;
 import id.my.avmmartin.matched.utils.CommonUtils;
+import id.my.avmmartin.matched.utils.Constants;
 
 public class ViewHolder extends BaseViewHolder<Schedule> {
     private TextView tvScheduleTitle;
@@ -36,7 +37,8 @@ public class ViewHolder extends BaseViewHolder<Schedule> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(itemView.getContext(), EditScheduleActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                intent.putExtra(Constants.INTENT_SELECTED_SCHEDULE_ID, getData().getId());
                 itemView.getContext().startActivity(intent);
             }
         });
