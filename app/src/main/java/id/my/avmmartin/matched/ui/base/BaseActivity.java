@@ -18,6 +18,7 @@ import id.my.avmmartin.matched.utils.LoadDataUtils;
 public abstract class BaseActivity<V extends BasePresenter> extends AppCompatActivity implements BaseMVPView {
     private ProgressDialog progressDialog;
     protected V presenter;
+    private LoadDataUtils loadDataUtils;
 
     @CallSuper
     @Override
@@ -28,6 +29,18 @@ public abstract class BaseActivity<V extends BasePresenter> extends AppCompatAct
         initComponents();
         loadData();
         setEvents();
+
+        loadDataUtils = new LoadDataUtils(new LoadDataUtils.Listener() {
+            @Override
+            public void onPreExecute() {
+                preLoadOnlineData();
+            }
+
+            @Override
+            public void onPostExecute() {
+                postLoadOnlineData();
+            }
+        });
     }
 
     @CallSuper
@@ -35,7 +48,7 @@ public abstract class BaseActivity<V extends BasePresenter> extends AppCompatAct
     protected void onResume() {
         super.onResume();
 
-        new LoadDataUtils(this).execute(new Callable<Void>() {
+        loadDataUtils.execute(new Callable<Void>() {
             @Override
             public Void call() throws Exception {
                 loadOnlineData();
@@ -54,9 +67,22 @@ public abstract class BaseActivity<V extends BasePresenter> extends AppCompatAct
     protected abstract void initComponents();
     protected abstract void loadData();
     protected abstract void setEvents();
+
+    @CallSuper
+    protected void preLoadOnlineData() {
+        showLoading();
+    }
+
     protected void loadOnlineData() {
         // none
     }
+
+    @CallSuper
+    protected void postLoadOnlineData() {
+        hideLoading();
+    }
+
+    // mvp method
 
     @Override
     public void showLoading() {

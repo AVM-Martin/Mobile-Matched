@@ -4,17 +4,20 @@ import android.os.AsyncTask;
 
 import java.util.concurrent.Callable;
 
-import id.my.avmmartin.matched.ui.base.BaseMVPView;
-
 public class LoadDataUtils extends AsyncTask<Callable<Void>, Integer, Void> {
-    private BaseMVPView baseMVPView;
+    public interface Listener {
+        void onPreExecute();
+        void onPostExecute();
+    }
+
+    private Listener listener;
 
     // overridden method
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        baseMVPView.showLoading();
+        listener.onPreExecute();
     }
 
     @Override
@@ -31,13 +34,13 @@ public class LoadDataUtils extends AsyncTask<Callable<Void>, Integer, Void> {
     @Override
     protected void onPostExecute(Void t) {
         super.onPostExecute(t);
-        baseMVPView.hideLoading();
+        listener.onPostExecute();
     }
 
     // constructor
 
-    public LoadDataUtils(BaseMVPView baseMVPView) {
+    public LoadDataUtils(Listener listener) {
         super();
-        this.baseMVPView = baseMVPView;
+        this.listener = listener;
     }
 }
