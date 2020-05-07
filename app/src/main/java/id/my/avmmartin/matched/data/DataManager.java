@@ -27,6 +27,19 @@ public final class DataManager {
 
     // PermissionApproval
 
+    public PermissionApproval getPermissionApprovalById(String id) {
+        // TODO: get online data
+        List<PermissionApproval> permissionApprovals = PermissionApprovalFactory.getAllApproval();
+
+        for (PermissionApproval permissionApproval: permissionApprovals) {
+            if (permissionApproval.getId().equals(id)) {
+                return permissionApproval;
+            }
+        }
+
+        return null;
+    }
+
     public List<PermissionApproval> getPendingApproval(String username) {
         if (username == null) {
             return new Vector<>();
