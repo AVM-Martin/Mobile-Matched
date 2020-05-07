@@ -1,5 +1,6 @@
 package id.my.avmmartin.matched.ui.account.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import id.my.avmmartin.matched.R;
+import id.my.avmmartin.matched.ui.account.login.LoginActivity;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 
 public class AccountActivity extends BaseActivity<Presenter> implements MVPView {
@@ -28,7 +30,10 @@ public class AccountActivity extends BaseActivity<Presenter> implements MVPView 
     @Override
     public void logout() {
         presenter.logout();
-        // TODO: logout current user
+
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     // overridden method
