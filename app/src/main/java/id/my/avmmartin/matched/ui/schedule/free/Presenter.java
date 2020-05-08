@@ -40,13 +40,13 @@ public class Presenter extends BasePresenter<MVPView> implements MVPPresenter {
             Schedule schedule = schedules1.get(i);
             int st = CommonUtils.toMinuteFormat(schedule.getStartTime());
             int en = CommonUtils.toMinuteFormat(schedule.getEndTime());
-            for(int j=st; j<=en; j++) flag[j] = true;
+            for(int j=st+1; j<=en-1; j++) flag[j] = true;
         }
         for(int i=0; i<schedules2.size(); i++) {
             Schedule schedule = schedules2.get(i);
             int st = CommonUtils.toMinuteFormat(schedule.getStartTime());
             int en = CommonUtils.toMinuteFormat(schedule.getEndTime());
-            for(int j=st; j<=en; j++) flag[j] = true;
+            for(int j=st+1; j<=en-1; j++) flag[j] = true;
         }
         int st = 0, en;
         for(int i=0; i<=1440; i++) {
@@ -54,11 +54,11 @@ public class Presenter extends BasePresenter<MVPView> implements MVPPresenter {
                 en = i-1;
                 if(en-st > 0) {
                     Calendar startTime = Calendar.getInstance();
-                    startTime.set(Calendar.HOUR, st / 60);
+                    startTime.set(Calendar.HOUR_OF_DAY, st / 60);
                     startTime.set(Calendar.MINUTE, st % 60);
 
                     Calendar endTime = Calendar.getInstance();
-                    endTime.set(Calendar.HOUR, en / 60);
+                    endTime.set(Calendar.HOUR_OF_DAY, en / 60);
                     endTime.set(Calendar.MINUTE, en % 60);
 
                     try {

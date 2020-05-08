@@ -19,4 +19,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/header" />
 
+    <id.my.avmmartin.matched.components.footer.CustomFooter
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+    </id.my.avmmartin.matched.components.footer.CustomFooter>
+
 </RelativeLayout>

@@ -23,8 +23,8 @@ public class ViewHolder extends BaseViewHolder<Schedule> {
         tvScheduleTitle.setText(getData().getName());
         tvScheduleTimeAndPlace.setText(
             CommonUtils.toTimeFormat(getData().getStartTime())
-                + " "
-                + getData().getLocation()
+                + " - "
+                + CommonUtils.toTimeFormat(getData().getEndTime())
         );
     }
 
