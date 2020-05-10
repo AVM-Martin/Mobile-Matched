@@ -15,6 +15,7 @@
         <activity android:name=".ui.account.view.AccountActivity" />
         <activity android:name=".ui.approve.add.AddApproval" />
         <activity android:name=".ui.approve.pending.PendingApprovalActivity" />
+        <activity android:name=".ui.chat.details.ChatDetailsActivity" />
         <activity android:name=".ui.chat.view.ChatListActivity" />
         <activity android:name=".ui.schedule.add.AddActivity" />
         <activity android:name=".ui.schedule.edit.EditScheduleActivity" />
