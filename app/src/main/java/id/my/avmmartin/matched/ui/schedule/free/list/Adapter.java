@@ -24,7 +24,7 @@ public class Adapter extends BaseRecyclerViewAdapter<ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(activity).inflate(R.layout.list_schedule_view, parent, false);
+        View v = LayoutInflater.from(activity).inflate(R.layout.single_schedule_view, parent, false);
 
         return new ViewHolder(v);
     }
