@@ -31,12 +31,12 @@ public class PermissionApprovalFactory {
         Calendar date = Calendar.getInstance();
 
         date.set(2020, 5, 15);
-        pendingApproval.add(new PermissionApproval((Calendar) date.clone(), "avm_martin", "ekeitaro"));
-        allApproval.add(new PermissionApproval((Calendar) date.clone(), "avm_martin", "ekeitaro"));
+        pendingApproval.add(new PermissionApproval((Calendar) date.clone(), "guest", "ekeitaro"));
+        allApproval.add(new PermissionApproval((Calendar) date.clone(), "guest", "ekeitaro"));
 
         date.set(2020,5, 10);
-        pendingApproval.add(new PermissionApproval((Calendar) date.clone(), "ekeitaro", "avm_martin"));
-        allApproval.add(new PermissionApproval((Calendar) date.clone(), "ekeitaro", "avm_martin"));
+        pendingApproval.add(new PermissionApproval((Calendar) date.clone(), "avm_martin", "guest"));
+        allApproval.add(new PermissionApproval((Calendar) date.clone(), "avm_martin", "guest"));
     }
 
     private void createApprovedApproval() {
@@ -46,13 +46,13 @@ public class PermissionApprovalFactory {
             Calendar date = Calendar.getInstance();
 
             date.set(2020, 5, 6);
-            PermissionApproval a = new PermissionApproval((Calendar) date.clone(), "avm_martin", "ekeitaro");
+            PermissionApproval a = new PermissionApproval((Calendar) date.clone(), "ekeitaro", "guest");
             a.approve();
             approvedApproval.add(a);
             allApproval.add(a);
 
             date.set(2020,5, 3);
-            PermissionApproval b = new PermissionApproval((Calendar) date.clone(), "ekeitaro", "avm_martin");
+            PermissionApproval b = new PermissionApproval((Calendar) date.clone(), "guest", "avm_martin");
             b.approve();
             approvedApproval.add(b);
             allApproval.add(b);

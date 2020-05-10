@@ -23,7 +23,7 @@ public class ScheduleFactory {
                 int month = 3 + rnd.nextInt(2); // April and May
                 int day = 1 + rnd.nextInt(30);  // only 1..30
                 int hour = rnd.nextInt(24);
-                int minute = rnd.nextInt(60);
+                int minute = 30 * rnd.nextInt(2);
                 int duration = 1 + rnd.nextInt(3);
 
                 startTime.set(2020, month, day, hour, minute, 0);
