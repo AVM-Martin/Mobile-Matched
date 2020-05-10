@@ -46,7 +46,7 @@ public class ChatListActivity extends BaseActivity<Presenter> implements MVPView
 
     @Override
     protected void loadData() {
-        adapter = new Adapter(this);
+        adapter = new Adapter(this, presenter.getDataManager());
         rvChatList.setLayoutManager(new LinearLayoutManager(this));
         rvChatList.setAdapter(adapter);
     }

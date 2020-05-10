@@ -47,7 +47,7 @@ public class PendingApprovalActivity extends BaseActivity<Presenter> implements 
 
     @Override
     protected void loadData() {
-        approvalAdapter = new ApprovalAdapter(PendingApprovalActivity.this);
+        approvalAdapter = new ApprovalAdapter(this, presenter.getDataManager());
         rvListApproval.setLayoutManager(new LinearLayoutManager(this));
         rvListApproval.setAdapter(approvalAdapter);
     }

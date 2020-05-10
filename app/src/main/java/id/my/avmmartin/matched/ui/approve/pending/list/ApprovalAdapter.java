@@ -85,9 +85,9 @@ public class ApprovalAdapter extends BaseRecyclerViewAdapter<ApprovalViewHolder>
     private DataManager dataManager;
     private String username;
 
-    public ApprovalAdapter(BaseActivity activity) {
+    public ApprovalAdapter(BaseActivity activity, DataManager dataManager) {
         this.activity = activity;
-        this.dataManager = new DataManager(activity);
+        this.dataManager = dataManager;
         this.username = null;
     }
 }

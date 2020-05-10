@@ -64,8 +64,8 @@ public class Adapter extends BaseRecyclerViewAdapter<ViewHolder> {
     private BaseActivity activity;
     private DataManager dataManager;
 
-    public Adapter(BaseActivity activity) {
+    public Adapter(BaseActivity activity, DataManager dataManager) {
         this.activity = activity;
-        this.dataManager = new DataManager(activity);
+        this.dataManager = dataManager;
     }
 }

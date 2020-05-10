@@ -29,7 +29,7 @@ public class ChatDetailsActivity extends BaseActivity<Presenter> implements MVPV
 
     @Override
     protected void loadData() {
-        adapter = new Adapter(this);
+        adapter = new Adapter(this, presenter.getDataManager());
         rvChatDetails.setLayoutManager(new LinearLayoutManager(this));
         rvChatDetails.setAdapter(adapter);
     }
