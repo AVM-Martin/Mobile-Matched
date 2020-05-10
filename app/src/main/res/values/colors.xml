@@ -5,6 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorToolbar">@color/lightblue</color>
 
+    <color name="white">#FFFFFF</color>
     <color name="lightblue">#4BADFF</color>
     <color name="blue">#3371FF</color>
     <color name="black">#000000</color>
