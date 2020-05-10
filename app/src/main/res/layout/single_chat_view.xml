@@ -9,7 +9,7 @@
         android:layout_width="75sp"
         android:layout_height="75sp"
         android:layout_gravity="center_vertical"
-        android:src="@color/colorPrimary" />
+        android:src="@drawable/profile_picture" />
 
     <TextView
         android:id="@+id/tvSenderUser"
@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:text="Nama"
         android:layout_marginLeft="20sp"
+        android:textSize="20dp"
         android:textStyle="bold" />
 
 </LinearLayout>
