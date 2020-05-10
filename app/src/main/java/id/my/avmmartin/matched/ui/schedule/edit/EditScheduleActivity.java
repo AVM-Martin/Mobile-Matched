@@ -85,7 +85,7 @@ public class EditScheduleActivity extends BaseActivity<Presenter> implements MVP
         }
 
         AddMenu addMenu = findViewById(R.id.addMenu);
-        addMenu.setVisibility(View.INVISIBLE);
+        addMenu.setVisibility(View.GONE);
     }
 
     @Override
