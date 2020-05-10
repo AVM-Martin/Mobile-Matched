@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.chat.view.ApprovedActivity">
+    tools:context=".ui.schedule.free.FreeScheduleActivity">
 
     <include
         android:id="@+id/header"
@@ -22,8 +22,6 @@
     <id.my.avmmartin.matched.components.footer.CustomFooter
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-    </id.my.avmmartin.matched.components.footer.CustomFooter>
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
