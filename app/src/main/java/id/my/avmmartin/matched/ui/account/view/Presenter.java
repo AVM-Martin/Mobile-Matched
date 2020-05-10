@@ -61,7 +61,6 @@ public class Presenter extends BasePresenter<MVPView> implements MVPPresenter {
 
     @Override
     public void logout() {
-        // TODO: logout
-        getMVPView().showMessage("TODO: logout");
+        getDataManager().logout();
     }
 }
