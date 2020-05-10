@@ -93,6 +93,7 @@ class CalendarAdapter extends ArrayAdapter {
         this.dates = dates;
         this.currentDate = currentDate;
         this.inflater = LayoutInflater.from(context);
-        this.dataManager = new AppDataManager(context);
+//        this.dataManager = new AppDataManager(context);
+        this.dataManager = new ProtoManager(context); // TODO: prototype
     }
 }

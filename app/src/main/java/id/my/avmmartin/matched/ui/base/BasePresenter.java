@@ -12,7 +12,8 @@ public abstract class BasePresenter<V extends BaseMVPView> implements BaseMVPPre
     private V mvpView;
 
     public BasePresenter(BaseActivity context) {
-        this.dataManager = new AppDataManager(context);
+//        this.dataManager = new AppDataManager(context);
+        this.dataManager = new ProtoManager(context); // TODO: prototype
         this.context = context;
     }
 
