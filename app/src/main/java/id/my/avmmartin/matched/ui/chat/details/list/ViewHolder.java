@@ -1,6 +1,5 @@
 package id.my.avmmartin.matched.ui.chat.details.list;
 
-import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
