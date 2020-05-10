@@ -7,7 +7,6 @@ import java.util.concurrent.ExecutionException;
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.exception.EmptyEntryException;
 import id.my.avmmartin.matched.exception.GeneralException;
-import id.my.avmmartin.matched.exception.InvalidCredentialsException;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.ui.base.BasePresenter;
 
@@ -25,6 +24,7 @@ public class Presenter extends BasePresenter<MVPView> implements MVPPresenter {
             throw new EmptyEntryException(R.string.warning_empty_password);
         }
 
+        // TODO: error with online data
         getDataManager().login(username, password);
     }
 
