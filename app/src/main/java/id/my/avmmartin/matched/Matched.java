@@ -9,9 +9,5 @@ public final class Matched extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        // TODO: remove this line before production phase
-        ScheduleFactory.generate(getApplicationContext());
-        PreferencesFactory.generate(getApplicationContext());
     }
 }
