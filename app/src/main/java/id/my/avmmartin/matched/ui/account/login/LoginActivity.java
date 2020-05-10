@@ -6,9 +6,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.concurrent.ExecutionException;
+
 import id.my.avmmartin.matched.R;
+import id.my.avmmartin.matched.exception.GeneralException;
 import id.my.avmmartin.matched.ui.account.register.RegisterActivity;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
+import id.my.avmmartin.matched.ui.schedule.view.Activity;
 
 public class LoginActivity extends BaseActivity<Presenter> implements MVPView {
     private EditText etUserName;
@@ -20,7 +24,20 @@ public class LoginActivity extends BaseActivity<Presenter> implements MVPView {
 
     @Override
     public void btnLoginOnClick() {
-        presenter.login();
+        try {
+            presenter.login(etUserName, etPassword);
+
+            Intent intent = new Intent(this, Activity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+
+        } catch (InterruptedException e) {
+            showMessage(R.string.error_general);
+        } catch (ExecutionException e) {
+            showMessage(R.string.error_general);
+        } catch (GeneralException e) {
+            showMessage(e.getErrorId());
+        }
     }
 
     @Override

@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import id.my.avmmartin.matched.R;
+import id.my.avmmartin.matched.exception.GeneralException;
 import id.my.avmmartin.matched.ui.account.login.LoginActivity;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 
@@ -22,9 +23,14 @@ public class AccountActivity extends BaseActivity<Presenter> implements MVPView 
 
     @Override
     public void updateAccount() {
-        presenter.updateAccount();
-        loadData();
-        showMessage(getString(R.string.success_update));
+        try {
+            presenter.updateAccount(etUserName, etFullName, etPassword);
+
+            showMessage(R.string.success_update);
+
+        } catch (GeneralException e) {
+            showMessage(e.getErrorId());
+        }
     }
 
     @Override

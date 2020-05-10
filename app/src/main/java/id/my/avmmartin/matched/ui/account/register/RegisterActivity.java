@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import id.my.avmmartin.matched.R;
+import id.my.avmmartin.matched.exception.GeneralException;
 import id.my.avmmartin.matched.ui.account.login.LoginActivity;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 
@@ -28,8 +29,14 @@ public class RegisterActivity extends BaseActivity<Presenter> implements MVPView
 
     @Override
     public void btnRegisterOnClick() {
-        presenter.register();
-        btnLoginOnClick();
+        try {
+            presenter.register(etUserName, etFullName, etPassword);
+
+            btnLoginOnClick();
+
+        } catch (GeneralException e) {
+            showMessage(e.getErrorId());
+        }
     }
 
     // overridden method
