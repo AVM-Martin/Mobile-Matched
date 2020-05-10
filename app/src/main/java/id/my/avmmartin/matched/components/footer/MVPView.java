@@ -5,6 +5,6 @@ import id.my.avmmartin.matched.components.base.BaseMVPView;
 interface MVPView extends BaseMVPView {
     void goToHome();
     void goToApproval();
-    void goToFreeSchedule();
+    void goToChatList();
     void goToAccount();
 }

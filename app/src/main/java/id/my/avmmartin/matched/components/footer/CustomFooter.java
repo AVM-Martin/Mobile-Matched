@@ -11,13 +11,13 @@ import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.components.base.BaseLinearLayout;
 import id.my.avmmartin.matched.ui.account.view.AccountActivity;
 import id.my.avmmartin.matched.ui.approve.pending.PendingApprovalActivity;
-import id.my.avmmartin.matched.ui.chat.view.ApprovedActivity;
+import id.my.avmmartin.matched.ui.chat.view.ChatListActivity;
 import id.my.avmmartin.matched.ui.schedule.view.Activity;
 
 public class CustomFooter extends BaseLinearLayout implements MVPView {
     private ImageView ivHome;
     private ImageView ivApproval;
-    private ImageView ivFreeSchedule;
+    private ImageView ivChatList;
     private ImageView ivAccount;
 
     // constructor
@@ -47,8 +47,8 @@ public class CustomFooter extends BaseLinearLayout implements MVPView {
     }
 
     @Override
-    public void goToFreeSchedule() {
-        Intent intent = new Intent(getContext(), ApprovedActivity.class);
+    public void goToChatList() {
+        Intent intent = new Intent(getContext(), ChatListActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NO_ANIMATION);
         getContext().startActivity(intent);
     }
@@ -70,7 +70,7 @@ public class CustomFooter extends BaseLinearLayout implements MVPView {
 
         ivHome = view.findViewById(R.id.ivHome);
         ivApproval = view.findViewById(R.id.ivApproval);
-        ivFreeSchedule = view.findViewById(R.id.ivFreeSchedule);
+        ivChatList = view.findViewById(R.id.ivChatList);
         ivAccount = view.findViewById(R.id.ivAccount);
 
     }
@@ -94,10 +94,10 @@ public class CustomFooter extends BaseLinearLayout implements MVPView {
                 goToApproval();
             }
         });
-        ivFreeSchedule.setOnClickListener(new OnClickListener() {
+        ivChatList.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToFreeSchedule();
+                goToChatList();
             }
         });
         ivAccount.setOnClickListener(new OnClickListener() {

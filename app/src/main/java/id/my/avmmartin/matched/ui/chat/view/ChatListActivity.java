@@ -13,8 +13,8 @@ import id.my.avmmartin.matched.ui.chat.view.list.Adapter;
 import id.my.avmmartin.matched.ui.schedule.free.FreeScheduleActivity;
 import id.my.avmmartin.matched.utils.Constants;
 
-public class ApprovedActivity extends BaseActivity<Presenter> implements MVPView {
-    private RecyclerView rvListApproval;
+public class ChatListActivity extends BaseActivity<Presenter> implements MVPView {
+    private RecyclerView rvChatList;
 
     private Adapter adapter;
 
@@ -32,24 +32,24 @@ public class ApprovedActivity extends BaseActivity<Presenter> implements MVPView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_approval_view);
+        setContentView(R.layout.activity_chat_view);
         super.onCreate(savedInstanceState);
     }
 
     @Override
     protected void initComponents() {
-        rvListApproval = findViewById(R.id.rvListApproval);
+        rvChatList = findViewById(R.id.rvChatList);
 
-        ImageView ivFreeSchedule = findViewById(R.id.ivFreeSchedule);
-        ivFreeSchedule.setImageResource(R.drawable.list_selected_24dp);
-        ivFreeSchedule.setClickable(false);
+        ImageView ivChatList = findViewById(R.id.ivChatList);
+        ivChatList.setImageResource(R.drawable.list_selected_24dp);
+        ivChatList.setClickable(false);
     }
 
     @Override
     protected void loadData() {
         adapter = new Adapter(this);
-        rvListApproval.setLayoutManager(new LinearLayoutManager(this));
-        rvListApproval.setAdapter(adapter);
+        rvChatList.setLayoutManager(new LinearLayoutManager(this));
+        rvChatList.setAdapter(adapter);
     }
 
     @Override
