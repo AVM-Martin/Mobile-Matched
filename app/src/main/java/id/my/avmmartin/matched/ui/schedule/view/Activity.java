@@ -13,6 +13,7 @@ import java.util.Calendar;
 
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.components.calendar.CustomCalendar;
+import id.my.avmmartin.matched.ui.account.login.LoginActivity;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.ui.schedule.add.AddActivity;
 import id.my.avmmartin.matched.ui.schedule.view.list.Adapter;
@@ -46,6 +47,17 @@ public class Activity extends BaseActivity<Presenter> implements MVPView {
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_schedule_view);
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (!presenter.getDataManager().isLoggedIn()) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
     }
 
     @Override
