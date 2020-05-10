@@ -2,6 +2,7 @@ package id.my.avmmartin.matched.ui.base;
 
 import android.content.Context;
 
+import id.my.avmmartin.matched.data.AppDataManager;
 import id.my.avmmartin.matched.data.DataManager;
 
 public abstract class BasePresenter<V extends BaseMVPView> implements BaseMVPPresenter<V> {
@@ -10,7 +11,7 @@ public abstract class BasePresenter<V extends BaseMVPView> implements BaseMVPPre
     private V mvpView;
 
     public BasePresenter(BaseActivity context) {
-        this.dataManager = new DataManager(context);
+        this.dataManager = new AppDataManager(context);
         this.context = context;
     }
 

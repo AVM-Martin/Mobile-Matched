@@ -14,6 +14,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import id.my.avmmartin.matched.R;
+import id.my.avmmartin.matched.data.AppDataManager;
 import id.my.avmmartin.matched.data.DataManager;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 
@@ -92,6 +93,6 @@ class CalendarAdapter extends ArrayAdapter {
         this.dates = dates;
         this.currentDate = currentDate;
         this.inflater = LayoutInflater.from(context);
-        this.dataManager = new DataManager(context);
+        this.dataManager = new AppDataManager(context);
     }
 }
