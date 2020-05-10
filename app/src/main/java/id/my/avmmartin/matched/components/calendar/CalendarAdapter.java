@@ -16,7 +16,7 @@ import java.util.List;
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.data.AppDataManager;
 import id.my.avmmartin.matched.data.DataManager;
-import id.my.avmmartin.matched.ui.base.BaseActivity;
+import id.my.avmmartin.matched.data.ProtoManager;
 
 class CalendarAdapter extends ArrayAdapter {
     private List<Calendar> dates;

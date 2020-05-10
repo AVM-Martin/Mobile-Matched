@@ -4,6 +4,7 @@ import android.content.Context;
 
 import id.my.avmmartin.matched.data.AppDataManager;
 import id.my.avmmartin.matched.data.DataManager;
+import id.my.avmmartin.matched.data.ProtoManager;
 
 public abstract class BasePresenter<V extends BaseMVPView> implements BaseMVPPresenter<V> {
     private final DataManager dataManager;
