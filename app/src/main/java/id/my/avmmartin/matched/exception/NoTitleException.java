@@ -1,7 +1,9 @@
 package id.my.avmmartin.matched.exception;
 
-public class NoTitleException extends Exception {
+import id.my.avmmartin.matched.R;
+
+public class NoTitleException extends GeneralException {
     public NoTitleException() {
-        super("Please insert title");
+        super("Please insert title", R.string.warning_empty_title);
     }
 }

@@ -1,7 +1,9 @@
 package id.my.avmmartin.matched.exception;
 
-public class InvalidDurationException extends Exception {
+import id.my.avmmartin.matched.R;
+
+public class InvalidDurationException extends GeneralException {
     public InvalidDurationException() {
-        super("Invalid End Time");
+        super("Invalid End Time", R.string.warning_invalid_duration);
     }
 }

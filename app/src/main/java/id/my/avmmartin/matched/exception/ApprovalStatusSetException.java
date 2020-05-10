@@ -1,7 +1,9 @@
 package id.my.avmmartin.matched.exception;
 
-public class ApprovalStatusSetException extends Exception {
+import id.my.avmmartin.matched.R;
+
+public class ApprovalStatusSetException extends GeneralException {
     public ApprovalStatusSetException() {
-        super("Approval has been set before");
+        super("Approval has been set before", R.string.error_duplicate_approval);
     }
 }

@@ -1,7 +1,9 @@
 package id.my.avmmartin.matched.exception;
 
-public class InvalidCredentialsException extends Exception {
+import id.my.avmmartin.matched.R;
+
+public class InvalidCredentialsException extends GeneralException {
     public InvalidCredentialsException() {
-        super("Invalid username / password");
+        super("Invalid username password", R.string.warning_not_match_account);
     }
 }

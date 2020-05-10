@@ -1,6 +1,21 @@
 <resources>
     <string name="app_name">Matched</string>
-    <string name="some_error">Error</string>
+
+    <string name="warning_empty_username">Username must be filled</string>
+    <string name="warning_empty_fullname">Full name must be filled</string>
+    <string name="warning_empty_password">Password must be filled</string>
+    <string name="warning_empty_title">Title must be filled</string>
+
+    <string name="warning_invalid_username">Username format is invalid</string>
+    <string name="warning_invalid_password">Password format is invalid</string>
+    <string name="warning_invalid_duration">Invalid End Time</string>
+    <string name="warning_duplicate_username">This Username has been registered</string>
+
+    <string name="warning_not_match_account">This account does not match to our data</string>
+
+    <string name="error_duplicate_approval">Approval has been set before</string>
+    <string name="error_prototype">You are not allowed to do this action</string>
+    <string name="error_general">Unknown Error</string>
 
     <string name="username">Username</string>
     <string name="fullname">Full Name</string>
