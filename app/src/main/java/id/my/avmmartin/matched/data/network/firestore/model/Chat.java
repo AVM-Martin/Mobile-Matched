@@ -22,8 +22,8 @@ public class Chat {
         // default constructor
     }
 
-    public Chat(String message, String senderUsersFK, String receiverUsersFK) {
-        setTimestamp(Calendar.getInstance());
+    public Chat(Calendar timestamp, String message, String senderUsersFK, String receiverUsersFK) {
+        setTimestamp(timestamp);
         setMessage(message);
         setSenderUsersFK(senderUsersFK);
         setReceiverUsersFK(receiverUsersFK);

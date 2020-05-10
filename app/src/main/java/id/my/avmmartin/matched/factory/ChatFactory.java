@@ -1,5 +1,6 @@
 package id.my.avmmartin.matched.factory;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Vector;
 
@@ -29,19 +30,34 @@ public class ChatFactory {
     private void createChatDetails() {
         chatDetails = new Vector<>();
 
+        Calendar calendarA = Calendar.getInstance();
+        calendarA.set(Calendar.HOUR_OF_DAY, 13);
+        calendarA.set(Calendar.MINUTE, 50);
+
+        Calendar calendarB = Calendar.getInstance();
+        calendarB.set(Calendar.HOUR_OF_DAY, 13);
+        calendarB.set(Calendar.MINUTE, 57);
+
+        Calendar calendarC = Calendar.getInstance();
+        calendarC.set(Calendar.HOUR_OF_DAY, 14);
+        calendarC.set(Calendar.MINUTE, 01);
+
         chatDetails.add(new Chat(
+            calendarA,
             "What time do you want to meet up on June 6?",
             "ekeitaro",
             "avm_martin"
         ));
 
         chatDetails.add(new Chat(
+            calendarB,
             createFreeSchedule(),
             "Bot",
             "avm_martin"
         ));
 
         chatDetails.add(new Chat(
+            calendarC,
             "What about 15:00?",
             "avm_martin",
             "ekeitaro"
