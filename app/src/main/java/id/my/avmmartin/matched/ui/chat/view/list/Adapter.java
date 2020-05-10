@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutionException;
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.components.base.BaseListener;
 import id.my.avmmartin.matched.data.DataManager;
-import id.my.avmmartin.matched.data.network.firestore.model.PermissionApproval;
+import id.my.avmmartin.matched.data.network.firestore.model.User;
 import id.my.avmmartin.matched.exception.InvalidTokenException;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.ui.base.BaseRecyclerViewAdapter;
@@ -53,7 +53,7 @@ public class Adapter extends BaseRecyclerViewAdapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        PermissionApproval data = dataManager.getApprovedApproval(username).get(position);
+        User data = dataManager.getChatList().get(position);
 
         holder.bindData(data);
 
@@ -69,7 +69,7 @@ public class Adapter extends BaseRecyclerViewAdapter<ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return dataManager.getApprovedApproval(username).size();
+        return dataManager.getChatList().size();
     }
 
     // constructor
