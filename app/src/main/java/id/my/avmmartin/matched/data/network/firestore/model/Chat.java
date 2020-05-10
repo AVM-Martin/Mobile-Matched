@@ -23,6 +23,7 @@ public class Chat {
     }
 
     public Chat(String message, String senderUsersFK, String receiverUsersFK) {
+        setTimestamp(Calendar.getInstance());
         setMessage(message);
         setSenderUsersFK(senderUsersFK);
         setReceiverUsersFK(receiverUsersFK);
