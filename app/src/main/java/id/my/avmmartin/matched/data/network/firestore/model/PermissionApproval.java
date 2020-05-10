@@ -37,11 +37,7 @@ public class PermissionApproval {
         // default constructor
     }
 
-    public PermissionApproval(
-        Calendar date,
-        String applicantUsersFK,
-        String respondentUsersFK
-    ) {
+    public PermissionApproval(Calendar date, String applicantUsersFK, String respondentUsersFK) {
         setDate(date);
         setApplicantUsersFK(applicantUsersFK);
         setRespondentUsersFK(respondentUsersFK);
