@@ -116,10 +116,15 @@ public final class AppDataManager extends DataManager {
     // UserToken
 
     @Override
+    public boolean isLoggedIn() {
+        return preferencesHelper.getUsername() != null;
+    }
+
+    @Override
     public void login(String username, String password) throws ExecutionException, InterruptedException, InvalidCredentialsException {
         User user = getUser(username);
 
-        if (!user.isValidPassword(password)) {
+        if (user == null || !user.isValidPassword(password)) {
             throw new InvalidCredentialsException();
         }
 

@@ -41,6 +41,7 @@ public abstract class DataManager {
     public abstract User getUser(final String username) throws ExecutionException, InterruptedException;
 
     // UserToken
+    public abstract boolean isLoggedIn();
     public abstract void login(String username, String password) throws ExecutionException, InterruptedException, InvalidCredentialsException;
     public abstract String getCurrentUsername() throws ExecutionException, InterruptedException, InvalidTokenException;
     public abstract void logout();
