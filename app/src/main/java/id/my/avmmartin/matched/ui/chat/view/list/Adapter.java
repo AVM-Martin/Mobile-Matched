@@ -45,8 +45,7 @@ public class Adapter extends BaseRecyclerViewAdapter<ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(activity).inflate(R.layout.single_approval_layout, parent, false);
-        v.findViewById(R.id.buttonGroup).setVisibility(View.GONE);
+        View v = LayoutInflater.from(activity).inflate(R.layout.single_chat_view, parent, false);
 
         return new ViewHolder(v);
     }
