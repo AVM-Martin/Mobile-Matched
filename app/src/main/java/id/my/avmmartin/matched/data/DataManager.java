@@ -1,5 +1,7 @@
 package id.my.avmmartin.matched.data;
 
+import android.content.Context;
+
 import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.ExecutionException;
@@ -19,11 +21,10 @@ import id.my.avmmartin.matched.exception.InvalidDurationException;
 import id.my.avmmartin.matched.exception.InvalidTokenException;
 import id.my.avmmartin.matched.factory.ChatFactory;
 import id.my.avmmartin.matched.factory.PermissionApprovalFactory;
-import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.utils.CommonUtils;
 
 public final class DataManager {
-    private final BaseActivity activity;
+    private final Context context;
     private final ScheduleManager scheduleManager;
     private final PreferencesHelper preferencesHelper;
 
@@ -137,7 +138,7 @@ public final class DataManager {
     // helper
 
     private String setUsernameReturnUserToken(String username) {
-        UserToken userToken = new UserToken(username, CommonUtils.getDeviceId(activity));
+        UserToken userToken = new UserToken(username, CommonUtils.getDeviceId(context));
 
         return UserTokenManager.getInstance().setUsernameReturnToken(userToken);
     }
@@ -146,16 +147,16 @@ public final class DataManager {
             final String token,
             String username
     ) throws ExecutionException, InterruptedException, InvalidTokenException {
-        final UserToken userToken = new UserToken(username, CommonUtils.getDeviceId(activity));
+        final UserToken userToken = new UserToken(username, CommonUtils.getDeviceId(context));
 
         return UserTokenManager.getInstance().isValidUsername(token, userToken);
     }
 
     // constructor
 
-    public DataManager(BaseActivity activity) {
-        this.activity = activity;
-        this.scheduleManager = new ScheduleManager(activity);
-        this.preferencesHelper = new PreferencesHelper(activity);
+    public DataManager(Context context) {
+        this.context = context;
+        this.scheduleManager = new ScheduleManager(context);
+        this.preferencesHelper = new PreferencesHelper(context);
     }
 }
