@@ -1,4 +1,4 @@
-package id.my.avmmartin.matched.ui.approve.view;
+package id.my.avmmartin.matched.ui.chat.view;
 
 import id.my.avmmartin.matched.ui.base.BaseActivity;
 import id.my.avmmartin.matched.ui.base.BasePresenter;

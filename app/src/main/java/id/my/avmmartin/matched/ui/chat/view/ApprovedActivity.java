@@ -1,4 +1,4 @@
-package id.my.avmmartin.matched.ui.approve.view;
+package id.my.avmmartin.matched.ui.chat.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import id.my.avmmartin.matched.R;
 import id.my.avmmartin.matched.ui.base.BaseActivity;
-import id.my.avmmartin.matched.ui.approve.view.list.Adapter;
+import id.my.avmmartin.matched.ui.chat.view.list.Adapter;
 import id.my.avmmartin.matched.ui.schedule.free.FreeScheduleActivity;
 import id.my.avmmartin.matched.utils.Constants;
 
