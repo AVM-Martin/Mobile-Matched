@@ -54,7 +54,7 @@ public class ChatFactory {
                 + "Free schedule 2\n" + "10:00 - 12:00\n" + "\n"
                 + "Free schedule 3\n" + "14:00 - 17:00\n" + "\n"
                 + "Free schedule 4\n" + "18:00 - 19:00\n" + "\n"
-                + "Free schedule 5\n" + "21:00 - 23:59\n" + "\n"
+                + "Free schedule 5\n" + "21:00 - 23:59"
         );
     }
 
