@@ -2,21 +2,17 @@
 
 <head>
   <title>Matched</title>
-  <link rel="stylesheet" type="text/css" href="assets/index.css">
-  <link rel="icon" href="assets/logo.png">
+  <link rel="stylesheet" type="text/css" href="/assets/index.css">
+  <link rel="icon" href="/assets/logo.png">
 </head>
 
 <body>
 
-  <div class="header">
-    <a href="/">
-      <h1>Matched</h1>
-    </a>
-  </div>
+  <div w3-include-html="/components/header.html"></div>
 
   <div class="content">
     <div class="centreMiddle">
-      <img src="assets/logo.png">
+      <img src="/assets/logo.png">
       <h1>Matched</h1>
       <div class="description">
         404 - File not found
@@ -24,27 +20,13 @@
     </div>
   </div>
 
-  <div class="footer">
-    <div class="centreBottom">
-      <a href="https://www.facebook.com/Matched-110414507332239">
-        <img src="assets/facebook-logo.webp" alt="" class="footer-logo">
-        Matched
-      </a>
-      <a href="https://twitter.com/MatchedMyID">
-        <img src="assets/twitter-logo.webp" alt="" class="footer-logo">
-        @MatchedMyID
-      </a>
-      <a href="https://instagram.com/official.matched?igshid=1b4m2zg5d0qcp">
-        <img src="assets/instagram-logo.jpeg" alt="" class="footer-logo">
-        @official.matched
-      </a>
-    </div>
-
-    <div class="centreRight">
-      Copyright &copy; 2020
-    </div>
-  </div>
+  <div w3-include-html="/components/footer.html"></div>
 
 </body>
+
+<script type="text/javascript" src="/assets/include.js"></script>
+<script type="text/javascript">
+  includeHTML();
+</script>
 
 </html>
