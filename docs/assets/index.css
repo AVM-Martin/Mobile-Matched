@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: #FFD59C;
+    font-family: 'Lato', sans-serif;
+}
+
+a {
+    font-weight: bold;
+    color: #000000;
+}
+
+/* header */
+
+div.header {
+    margin: 0px;
+    padding: 5px 25px;
+    background-color: #4BADFF;
+}
+
+div.header a {
+    text-decoration: none;
+}
+
+div.header h1 {
+    font-size: 2vw;
+    color: #000000;
+}
+
+/* content */
+
+div.content {
+    width: 100%;
+    color: #000000;
+}
+
+div.centreMiddle {
+    position: fixed;
+    top: 50%;
+    width: 100vw;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+div.centreMiddle h1 {
+    font-size: 3.5vw;
+    margin: 0px;
+    color: #000000;
+}
+
+div.centreMiddle img {
+    max-height: 30vh;
+    max-width: 60vw;
+}
+
+div.centreMiddle div.description {
+    margin: 30px;
+    padding: 5px;
+}
+
+div.centreMiddle code {
+    padding: 3px;
+    font-weight: bold;
+    background-color: #B0B0B0;
+    color: #000000;
+}
+
+/* footer */
+
+div.footer {
+    position: fixed;
+    margin: 0px;
+    width: 100vw;
+    bottom: 0%;
+    background-color: #FFFFFF;
+}
+
+div.footer div.centreBottom {
+    padding: 5px;
+    width: 100vw;
+    text-align: center;
+    color: #505050;
+}
+
+div.footer div.centreRight {
+    position: fixed;
+    margin: 0px;
+    padding: 5px;
+    width: 100vw;
+    bottom: 0%;
+    right: 0%;
+    text-align: right;
+    color: #505050;
+}
+
+div.footer img.footer-logo {
+    height: 18px;
+    width: 18px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+div.footer a {
+    text-decoration: none;
+    color: #505050;
+}
