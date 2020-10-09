@@ -80,7 +80,7 @@ div.footer {
 
 div.footer div.centreBottom {
     padding: 5px;
-    width: 100vw;
+    width: auto;
     text-align: center;
     color: #505050;
 }
@@ -89,7 +89,7 @@ div.footer div.centreRight {
     position: fixed;
     margin: 0px;
     padding: 5px;
-    width: 100vw;
+    width: auto;
     bottom: 0%;
     right: 0%;
     text-align: right;
